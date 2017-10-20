@@ -8,7 +8,13 @@ package Parser;
 import CompilerError.LexicalError;
 import Lexer.Token;
 import Lexer.Tokenizer;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.Stack;
 
 /**
@@ -44,6 +50,7 @@ public class Parser {
     public Tokenizer tokenizer;
     public ParseTable parseTable = new ParseTable();
     public RHSTable rhsTable = new RHSTable();
+    BufferedWriter bw;
 
     public static void main(String[] args) throws IOException, LexicalError {
         String s = args[0];
@@ -52,6 +59,13 @@ public class Parser {
 
     public Parser(String s) throws IOException, LexicalError {
         tokenizer = new Tokenizer(s);
+
+        File fout = new File("parseout.txt");
+        FileOutputStream fos = new FileOutputStream(fout);
+        bw = new BufferedWriter(new OutputStreamWriter(fos));
+        
+        parse();
+        bw.close();
     }
 
     public void parse() throws IOException, LexicalError {
@@ -61,6 +75,24 @@ public class Parser {
         stack.push(NonTerminal.Goal);
 
         while (!stack.empty() && !error) {
+            
+            
+            
+            System.out.println();
+            bw.newLine();
+            for (GrammarSymbol gs : stack) {
+			System.out.print(gs + " | ");
+                        bw.write(gs + " | ");
+
+		}
+		//new line for each new stack printed
+                bw.newLine();
+                bw.newLine();
+		System.out.println();
+                System.out.println();
+                
+                
+                
             if (currentToken.getType() == null) {
                 currentToken = tokenizer.getNextToken();
                 continue;
@@ -70,6 +102,8 @@ public class Parser {
 
             if (predicted.isToken()) {
                 if (predicted == currentToken.getType()) {
+                    bw.write("MATCH: " + predicted + " popped with " + currentToken);
+                    bw.newLine();
                     System.out.println("MATCH: " + predicted + " popped with " + currentToken);
                     currentToken = tokenizer.getNextToken();
                 } else if (predicted != currentToken) {
@@ -79,20 +113,16 @@ public class Parser {
             } else if (predicted.isNonTerminal()) {
                 int entry = parseTable.entry(currentToken.getType(), (NonTerminal) predicted);
                 if (entry == 999) {
-                    System.out.println("Error: Unexpected " + currentToken);
+                    System.out.println("Error: Unexpected " + currentToken + " predicted " + predicted);
                     error = true;
                 } else if (entry < 0); 
                 else {
-                    System.out.println("Popped " + predicted);
                     GrammarSymbol[] rule = rhsTable.getRule(entry);
                     //iterate from end of array and push the GrammarSymbols onto parse stack
                     int len = rule.length - 1;
-                    System.out.print("Pushed ");
                     for (int i = len; i >= 0; i--) {
                         stack.push(rule[i]);
-                        System.out.print(rule[i] + " ");
                     }
-                    System.out.println();
                 }
             }
         }

@@ -1,0 +1,813 @@
+
+ENDOFFILE | Goal | 
+
+
+ENDOFFILE | ENDMARKER | program | 
+
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declarations | SEMICOLON | RIGHTPAREN | identifier_list | LEFTPAREN | IDENTIFIER | PROGRAM | 
+
+MATCH: PROGRAM popped with <PROGRAM, null>
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declarations | SEMICOLON | RIGHTPAREN | identifier_list | LEFTPAREN | IDENTIFIER | 
+
+MATCH: IDENTIFIER popped with <IDENTIFIER, arrayTest>
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declarations | SEMICOLON | RIGHTPAREN | identifier_list | LEFTPAREN | 
+
+MATCH: LEFTPAREN popped with <LEFTPAREN, null>
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declarations | SEMICOLON | RIGHTPAREN | identifier_list | 
+
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declarations | SEMICOLON | RIGHTPAREN | identifier_list_tail | IDENTIFIER | 
+
+MATCH: IDENTIFIER popped with <IDENTIFIER, input>
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declarations | SEMICOLON | RIGHTPAREN | identifier_list_tail | 
+
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declarations | SEMICOLON | RIGHTPAREN | identifier_list_tail | IDENTIFIER | COMMA | 
+
+MATCH: COMMA popped with <COMMA, null>
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declarations | SEMICOLON | RIGHTPAREN | identifier_list_tail | IDENTIFIER | 
+
+MATCH: IDENTIFIER popped with <IDENTIFIER, output>
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declarations | SEMICOLON | RIGHTPAREN | identifier_list_tail | 
+
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declarations | SEMICOLON | RIGHTPAREN | 
+
+MATCH: RIGHTPAREN popped with <RIGHTPAREN, null>
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declarations | SEMICOLON | 
+
+MATCH: SEMICOLON popped with <SEMICOLON, null>
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declarations | 
+
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declarations | 
+
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list | VAR | 
+
+MATCH: VAR popped with <VAR, null>
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list | 
+
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list | 
+
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | type | COLON | identifier_list | 
+
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | type | COLON | identifier_list_tail | IDENTIFIER | 
+
+MATCH: IDENTIFIER popped with <IDENTIFIER, m>
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | type | COLON | identifier_list_tail | 
+
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | type | COLON | 
+
+MATCH: COLON popped with <COLON, null>
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | type | 
+
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | array_type | 
+
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | standard_type | OF | RIGHTBRACKET | INTCONSTANT | DOUBLEDOT | INTCONSTANT | LEFTBRACKET | ARRAY | 
+
+MATCH: ARRAY popped with <ARRAY, null>
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | standard_type | OF | RIGHTBRACKET | INTCONSTANT | DOUBLEDOT | INTCONSTANT | LEFTBRACKET | 
+
+MATCH: LEFTBRACKET popped with <LEFTBRACKET, null>
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | standard_type | OF | RIGHTBRACKET | INTCONSTANT | DOUBLEDOT | INTCONSTANT | 
+
+MATCH: INTCONSTANT popped with <INTCONSTANT, 1>
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | standard_type | OF | RIGHTBRACKET | INTCONSTANT | DOUBLEDOT | 
+
+MATCH: DOUBLEDOT popped with <DOUBLEDOT, null>
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | standard_type | OF | RIGHTBRACKET | INTCONSTANT | 
+
+MATCH: INTCONSTANT popped with <INTCONSTANT, 5>
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | standard_type | OF | RIGHTBRACKET | 
+
+MATCH: RIGHTBRACKET popped with <RIGHTBRACKET, null>
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | standard_type | OF | 
+
+MATCH: OF popped with <OF, null>
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | standard_type | 
+
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | INTEGER | 
+
+MATCH: INTEGER popped with <INTEGER, null>
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | 
+
+MATCH: SEMICOLON popped with <SEMICOLON, null>
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | 
+
+
+ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | 
+
+
+ENDOFFILE | ENDMARKER | compound_statement | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list | BEGIN | 
+
+MATCH: BEGIN popped with <BEGIN, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | elementary_statement | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | IDENTIFIER | 
+
+MATCH: IDENTIFIER popped with <IDENTIFIER, m>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | subscript | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression | LEFTBRACKET | 
+
+MATCH: LEFTBRACKET popped with <LEFTBRACKET, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | factor | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | constant | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | INTCONSTANT | 
+
+MATCH: INTCONSTANT popped with <INTCONSTANT, 1>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | 
+
+MATCH: RIGHTBRACKET popped with <RIGHTBRACKET, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | 
+
+MATCH: ASSIGNOP popped with <ASSIGNOP, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | factor | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | constant | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | INTCONSTANT | 
+
+MATCH: INTCONSTANT popped with <INTCONSTANT, 1>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | SEMICOLON | 
+
+MATCH: SEMICOLON popped with <SEMICOLON, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | elementary_statement | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | IDENTIFIER | 
+
+MATCH: IDENTIFIER popped with <IDENTIFIER, m>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | subscript | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression | LEFTBRACKET | 
+
+MATCH: LEFTBRACKET popped with <LEFTBRACKET, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | factor | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | constant | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | INTCONSTANT | 
+
+MATCH: INTCONSTANT popped with <INTCONSTANT, 2>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | 
+
+MATCH: RIGHTBRACKET popped with <RIGHTBRACKET, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | 
+
+MATCH: ASSIGNOP popped with <ASSIGNOP, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | factor | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | constant | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | INTCONSTANT | 
+
+MATCH: INTCONSTANT popped with <INTCONSTANT, 2>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | SEMICOLON | 
+
+MATCH: SEMICOLON popped with <SEMICOLON, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | elementary_statement | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | IDENTIFIER | 
+
+MATCH: IDENTIFIER popped with <IDENTIFIER, m>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | subscript | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression | LEFTBRACKET | 
+
+MATCH: LEFTBRACKET popped with <LEFTBRACKET, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | factor | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | constant | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | INTCONSTANT | 
+
+MATCH: INTCONSTANT popped with <INTCONSTANT, 3>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | 
+
+MATCH: RIGHTBRACKET popped with <RIGHTBRACKET, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | 
+
+MATCH: ASSIGNOP popped with <ASSIGNOP, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | factor | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | constant | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | INTCONSTANT | 
+
+MATCH: INTCONSTANT popped with <INTCONSTANT, 3>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | SEMICOLON | 
+
+MATCH: SEMICOLON popped with <SEMICOLON, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | elementary_statement | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | IDENTIFIER | 
+
+MATCH: IDENTIFIER popped with <IDENTIFIER, m>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | subscript | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression | LEFTBRACKET | 
+
+MATCH: LEFTBRACKET popped with <LEFTBRACKET, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | factor | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | constant | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | INTCONSTANT | 
+
+MATCH: INTCONSTANT popped with <INTCONSTANT, 4>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | 
+
+MATCH: RIGHTBRACKET popped with <RIGHTBRACKET, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | 
+
+MATCH: ASSIGNOP popped with <ASSIGNOP, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | factor | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | constant | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | INTCONSTANT | 
+
+MATCH: INTCONSTANT popped with <INTCONSTANT, 4>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | SEMICOLON | 
+
+MATCH: SEMICOLON popped with <SEMICOLON, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | elementary_statement | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | IDENTIFIER | 
+
+MATCH: IDENTIFIER popped with <IDENTIFIER, m>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | subscript | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression | LEFTBRACKET | 
+
+MATCH: LEFTBRACKET popped with <LEFTBRACKET, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | factor | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | constant | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | INTCONSTANT | 
+
+MATCH: INTCONSTANT popped with <INTCONSTANT, 5>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | 
+
+MATCH: RIGHTBRACKET popped with <RIGHTBRACKET, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | 
+
+MATCH: ASSIGNOP popped with <ASSIGNOP, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | factor | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | constant | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | INTCONSTANT | 
+
+MATCH: INTCONSTANT popped with <INTCONSTANT, 5>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | SEMICOLON | 
+
+MATCH: SEMICOLON popped with <SEMICOLON, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | elementary_statement | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | IDENTIFIER | 
+
+MATCH: IDENTIFIER popped with <IDENTIFIER, write>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | parameters | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list | LEFTPAREN | 
+
+MATCH: LEFTPAREN popped with <LEFTPAREN, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | factor | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | factor_tail | IDENTIFIER | 
+
+MATCH: IDENTIFIER popped with <IDENTIFIER, aff>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | factor_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | subscript | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression | LEFTBRACKET | 
+
+MATCH: LEFTBRACKET popped with <LEFTBRACKET, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression_tail | term | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | factor | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | constant | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | INTCONSTANT | 
+
+MATCH: INTCONSTANT popped with <INTCONSTANT, 1>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | 
+
+MATCH: RIGHTBRACKET popped with <RIGHTBRACKET, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | 
+
+MATCH: RIGHTPAREN popped with <RIGHTPAREN, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | SEMICOLON | 
+
+MATCH: SEMICOLON popped with <SEMICOLON, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | elementary_statement | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | IDENTIFIER | 
+
+MATCH: IDENTIFIER popped with <IDENTIFIER, write>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | parameters | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list | LEFTPAREN | 
+
+MATCH: LEFTPAREN popped with <LEFTPAREN, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | factor | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | factor_tail | IDENTIFIER | 
+
+MATCH: IDENTIFIER popped with <IDENTIFIER, bff>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | factor_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | subscript | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression | LEFTBRACKET | 
+
+MATCH: LEFTBRACKET popped with <LEFTBRACKET, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression_tail | term | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | factor | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | constant | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | INTCONSTANT | 
+
+MATCH: INTCONSTANT popped with <INTCONSTANT, 2>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | 
+
+MATCH: RIGHTBRACKET popped with <RIGHTBRACKET, null>
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | 
+
+
+ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expressi

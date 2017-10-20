@@ -3,14 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Father/Desktop/Everything/CS%20crap/Classes/CS331/Compiler/src/Parser/GrammarSymbol.java</file>
-            <file>file:/C:/Users/Father/Desktop/Everything/CS%20crap/Classes/CS331/Compiler/src/Lexer/Tokenizer.java</file>
-            <file>file:/C:/Users/Father/Desktop/Everything/CS%20crap/Classes/CS331/Compiler/src/Parser/RHSTable.java</file>
-            <file>file:/C:/Users/Father/Desktop/Everything/CS%20crap/Classes/CS331/Compiler/src/Parser/NonTerminal.java</file>
-            <file>file:/C:/Users/Father/Desktop/Everything/CS%20crap/Classes/CS331/Compiler/src/Parser/Parser.java</file>
-            <file>file:/C:/Users/Father/Desktop/Everything/CS%20crap/Classes/CS331/Compiler/src/Parser/ParseTable.java</file>
-            <file>file:/C:/Users/Father/Desktop/Everything/CS%20crap/Classes/CS331/Compiler/src/Lexer/Token.java</file>
-            <file>file:/C:/Users/Father/Desktop/Everything/CS%20crap/Classes/CS331/Compiler/src/Parser/TokenType.java</file>
+            <file>file:/C:/Users/Father/Desktop/Compiler/Compiler/src/Parser/Parser.java</file>
+            <file>file:/C:/Users/Father/Desktop/Compiler/Compiler/src/Lexer/Token.java</file>
+            <file>file:/C:/Users/Father/Desktop/Compiler/Compiler/src/Parser/RHSTable.java</file>
+            <file>file:/C:/Users/Father/Desktop/Compiler/Compiler/src/Lexer/Tokenizer.java</file>
         </group>
     </open-files>
 </project-private>

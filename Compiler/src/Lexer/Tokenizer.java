@@ -34,6 +34,12 @@ public class Tokenizer {
     FileOutputStream fos;
     BufferedWriter bw;
 
+    public static void main(String[] args) throws IOException, LexicalError {
+        String s = args[0];
+        Tokenizer tokenizer = new Tokenizer(s);
+
+    }
+
     public Tokenizer(String s) throws IOException, LexicalError {
         file = new File(s);
         reader = new BufferedReader(new FileReader(file));
@@ -44,17 +50,24 @@ public class Tokenizer {
 
         getLine();
 
-        while (currentLine != null) {
-            getNextToken();
-        }
-        Token end = new Token(TokenType.ENDOFFILE, null);
-        System.out.println(end.toString());
-        bw.close();
+//        while (currentLine != null) {
+//            getNextToken();
+//        }
+//        Token end = new Token(TokenType.ENDOFFILE, null);
+//        bw.write(end.toString());
+//        System.out.println(end.toString());
+//        bw.close();
     }
 
     public Token getNextToken() throws IOException, LexicalError {
         Token token = new Token();
+        if (currentLine == null) {
+            token.setType(TokenType.ENDOFFILE);
+            token.setValue(null);
+            bw.close();
+        }
         getChar();
+
         if (currentChar == BLANK) {
             getChar();
         }
@@ -80,142 +93,71 @@ public class Tokenizer {
         } else {
             token = isNumberToken();
         }
-        
-        System.out.println("Current token returned is " + token);
+
         return token;
     }
 
     public Token isNumberToken() throws LexicalError, IOException {
         Token token = new Token();
         String number = "";
-        boolean isDigit = (Character.isDigit(currentChar)
-                || currentChar == '+'
-                || currentChar == '-');
+
         if (currentChar == '+' || currentChar == '-') {
-            char oldChar = currentChar;
-            int oldIndex = charIndex;
-            if ((lastToken.getType().equals(TokenType.INTEGER)
-                    || lastToken.getType().equals(TokenType.REAL))
-                    || (currentChar == '+'
-                    || currentChar == '-')) {
-                currentChar = oldChar;
-                charIndex = oldIndex;
-
-                if (currentChar == '+') {
-                    token.setType(TokenType.ADDOP);
-                    token.setValue("1");
-                    System.out.println(token.toString());
-                    getChar();
-                    bw.write(token.toString());
-                    bw.newLine();
-                    lastToken = token;
-                    return token;
-                } else {
-                    token.setType(TokenType.ADDOP);
-                    token.setValue("2");
-                    getChar();
-
-                    System.out.println(token.toString());
-                    getChar();
-                    bw.write(token.toString());
-                    bw.newLine();
-                    lastToken = token;
-                    return token;
-                }
-            }
-        }
-
-        while (isDigit) {
             number += currentChar;
             getChar();
+        }
 
-            if (currentChar == 'e' || currentChar == 'E') {
-                char oldChar = currentChar;
-                int oldIndex = charIndex;
-                char x = getChar();
+        while (Character.isDigit(currentChar)) {
+            number += currentChar;
+            getChar();
+        }
+        token.setType(TokenType.INTCONSTANT);
+        token.setValue(number);
 
-                if (x == '+' || x == '-' || Character.isDigit(x)) {
-                    currentChar = oldChar;
-                    charIndex = oldIndex;
-                    number += currentChar;
-
-                    currentChar = getChar();
-                    if (currentChar == '+' || currentChar == '-') {
-                        number += currentChar;
-                        getChar();
-                    }
-                    while (Character.isDigit(currentChar)) {
-                        number += currentChar;
-                        getChar();
-                    }
-                    if (lastToken.getType().equals(TokenType.ASSIGNOP)) {
-                        token.setType(TokenType.REALCONSTANT);
-                        token.setValue(number);
-                    } else {
-                        token.setType(TokenType.REAL);
-                        token.setValue(number);
-                    }
-                } else {
-                    currentChar = oldChar;
-                    charIndex = charIndex - 2;
-                    if (lastToken.getType().equals(TokenType.ASSIGNOP)) {
-                        token.setType(TokenType.REALCONSTANT);
-                        token.setValue(number);
-                    } else {
-                        token.setType(TokenType.REAL);
-                        token.setValue(number);
-                    }
-
-                }
-            } else if (currentChar == '.') {
-                char oldChar = currentChar;
-                int oldIndex = charIndex;
-                char x = getChar();
-                if (x == '.') {
-                    pushBack(x);
-                    charIndex = oldIndex - 1;
-                    currentChar = currentLine.charAt(charIndex);
-                    pushBack(currentChar);
-                    if (lastToken.getType().equals(TokenType.ASSIGNOP)) {
-                        token.setType(TokenType.INTCONSTANT);
-                        token.setValue(number);
-                    } else {
-                        token.setType(TokenType.INTEGER);
-                        token.setValue(number);
-                    }
-                } else {
-                    currentChar = oldChar;
-                    charIndex = oldIndex;
-                    number += currentChar;
-                    currentChar = getChar();
-                    while (Character.isDigit(currentChar)) {
-                        number += currentChar;
-                        getChar();
-                    }
-                    if (lastToken.getType().equals(TokenType.ASSIGNOP)) {
-                        token.setType(TokenType.REALCONSTANT);
-                        token.setValue(number);
-                    } else {
-                        token.setType(TokenType.REAL);
-                        token.setValue(number);
-                    }
-
-                }
+        if (currentChar == '.') {
+            char previous = currentChar;
+            int previousIndex = charIndex;
+            getChar();
+            if (currentChar == '.') {
+                pushBack(currentChar);
+                currentChar = previous;
+                charIndex = previousIndex - 1;
             } else {
+                currentChar = previous;
+                charIndex = previousIndex;
+                number += currentChar;
+                currentChar = getChar();
                 while (Character.isDigit(currentChar)) {
                     number += currentChar;
-                    getChar();
+                    currentChar = getChar();
                 }
-                if (lastToken.getType().equals(TokenType.ASSIGNOP)) {
-                    token.setType(TokenType.INTCONSTANT);
-                    token.setValue(number);
-                } else {
-                    token.setType(TokenType.INTEGER);
-                    token.setValue(number);
-                }
+                token.setType(TokenType.REALCONSTANT);
+                token.setValue(number);
             }
-            isDigit = Character.isDigit(currentChar);
+        } else if (Character.toLowerCase(currentChar) == 'e') {
+            char oldChar = currentChar;
+            int oldIndex = charIndex;
+            char x = getChar();
+
+            if (x == '+' || x == '-' || Character.isDigit(x)) {
+                currentChar = oldChar;
+                charIndex = oldIndex;
+                number += currentChar;
+
+                currentChar = getChar();
+                if (currentChar == '+' || currentChar == '-') {
+                    number += currentChar;
+                    currentChar = getChar();
+                }
+                while (Character.isDigit(currentChar)) {
+                    number += currentChar;
+                    currentChar = getChar();
+                }
+                token.setType(TokenType.REALCONSTANT);
+                token.setValue(number);
+            }
         }
+
+        pushBack(currentChar);
         System.out.println(token.toString());
         bw.write(token.toString());
         bw.newLine();
@@ -240,9 +182,17 @@ public class Tokenizer {
             charIndex--;
         }
 
-        switch (identifier) {
-            case "Program":
+        switch (identifier.toLowerCase()) {
+            case "program":
                 token.setType(TokenType.PROGRAM);
+                token.setValue(null);
+                break;
+            case "integer":
+                token.setType(TokenType.INTEGER);
+                token.setValue(null);
+                break;
+            case "real":
+                token.setType(TokenType.REAL);
                 token.setValue(null);
                 break;
             case "begin":
@@ -301,19 +251,19 @@ public class Tokenizer {
                 token.setType(TokenType.NOT);
                 token.setValue(null);
                 break;
-            case "DIV":
+            case "div":
                 token.setType(TokenType.MULOP);
                 token.setValue("3");
                 break;
-            case "MOD":
+            case "mod":
                 token.setType(TokenType.MULOP);
                 token.setValue("4");
                 break;
-            case "AND":
+            case "and":
                 token.setType(TokenType.MULOP);
                 token.setValue("5");
                 break;
-            case "OR":
+            case "or":
                 token.setType(TokenType.ADDOP);
                 token.setValue("3");
                 break;
@@ -544,7 +494,3 @@ public class Tokenizer {
         }
     }
 }
-
-
-
-
