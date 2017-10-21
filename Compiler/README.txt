@@ -2,6 +2,4 @@ I reworked the lexer a bit to fix some of the logic and make it work with the pa
 
 You need to be within the Parser file to be able to run the program.
 
-Once you click build, type java -jar "C:\Users\Father\Desktop\Compiler\Compiler\dist\Compiler.jar" Test.txt to run the program.
-
 The output is displayed on both the terminal and also the file parseout.txt.
