@@ -1,813 +1,1292 @@
 
-ENDOFFILE | Goal | 
+STACK ::==> ENDOFFILE, <Goal>, 
+Popped <Goal> with token <PROGRAM, null>
+Pushed: ENDMARKER, <program>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, <program>, 
+Popped <program> with token <PROGRAM, null>
+Pushed: <compound_statement>, <sub_declarations>, <declarations>, SEMICOLON, RIGHTPAREN, <identifier_list>, LEFTPAREN, IDENTIFIER, PROGRAM, 
 
-ENDOFFILE | ENDMARKER | program | 
-
-
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declarations | SEMICOLON | RIGHTPAREN | identifier_list | LEFTPAREN | IDENTIFIER | PROGRAM | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declarations>, SEMICOLON, RIGHTPAREN, <identifier_list>, LEFTPAREN, IDENTIFIER, PROGRAM, 
 MATCH: PROGRAM popped with <PROGRAM, null>
 
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declarations | SEMICOLON | RIGHTPAREN | identifier_list | LEFTPAREN | IDENTIFIER | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declarations>, SEMICOLON, RIGHTPAREN, <identifier_list>, LEFTPAREN, IDENTIFIER, 
 MATCH: IDENTIFIER popped with <IDENTIFIER, arrayTest>
 
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declarations | SEMICOLON | RIGHTPAREN | identifier_list | LEFTPAREN | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declarations>, SEMICOLON, RIGHTPAREN, <identifier_list>, LEFTPAREN, 
 MATCH: LEFTPAREN popped with <LEFTPAREN, null>
 
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declarations | SEMICOLON | RIGHTPAREN | identifier_list | 
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declarations>, SEMICOLON, RIGHTPAREN, <identifier_list>, 
+Popped <identifier_list> with token <IDENTIFIER, input>
+Pushed: <identifier_list_tail>, IDENTIFIER, 
 
-
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declarations | SEMICOLON | RIGHTPAREN | identifier_list_tail | IDENTIFIER | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declarations>, SEMICOLON, RIGHTPAREN, <identifier_list_tail>, IDENTIFIER, 
 MATCH: IDENTIFIER popped with <IDENTIFIER, input>
 
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declarations | SEMICOLON | RIGHTPAREN | identifier_list_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declarations>, SEMICOLON, RIGHTPAREN, <identifier_list_tail>, 
+Popped <identifier_list_tail> with token <COMMA, null>
+Pushed: <identifier_list_tail>, IDENTIFIER, COMMA, 
 
-
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declarations | SEMICOLON | RIGHTPAREN | identifier_list_tail | IDENTIFIER | COMMA | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declarations>, SEMICOLON, RIGHTPAREN, <identifier_list_tail>, IDENTIFIER, COMMA, 
 MATCH: COMMA popped with <COMMA, null>
 
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declarations | SEMICOLON | RIGHTPAREN | identifier_list_tail | IDENTIFIER | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declarations>, SEMICOLON, RIGHTPAREN, <identifier_list_tail>, IDENTIFIER, 
 MATCH: IDENTIFIER popped with <IDENTIFIER, output>
 
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declarations | SEMICOLON | RIGHTPAREN | identifier_list_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declarations>, SEMICOLON, RIGHTPAREN, <identifier_list_tail>, 
+Popped <identifier_list_tail> with token <RIGHTPAREN, null>
+Pushed EPSILON
 
-
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declarations | SEMICOLON | RIGHTPAREN | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declarations>, SEMICOLON, RIGHTPAREN, 
 MATCH: RIGHTPAREN popped with <RIGHTPAREN, null>
 
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declarations | SEMICOLON | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declarations>, SEMICOLON, 
 MATCH: SEMICOLON popped with <SEMICOLON, null>
 
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declarations | 
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declarations>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declarations>, 
+Popped <declarations> with token <VAR, null>
+Pushed: <declaration_list>, VAR, 
 
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declarations | 
-
-
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list | VAR | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declaration_list>, VAR, 
 MATCH: VAR popped with <VAR, null>
 
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list | 
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declaration_list>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declaration_list>, 
+Popped <declaration_list> with token <IDENTIFIER, m>
+Pushed: <declaration_list_tail>, SEMICOLON, <type>, COLON, <identifier_list>, 
 
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list | 
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declaration_list_tail>, SEMICOLON, <type>, COLON, <identifier_list>, 
+Popped <identifier_list> with token <IDENTIFIER, m>
+Pushed: <identifier_list_tail>, IDENTIFIER, 
 
-
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | type | COLON | identifier_list | 
-
-
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | type | COLON | identifier_list_tail | IDENTIFIER | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declaration_list_tail>, SEMICOLON, <type>, COLON, <identifier_list_tail>, IDENTIFIER, 
 MATCH: IDENTIFIER popped with <IDENTIFIER, m>
 
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | type | COLON | identifier_list_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declaration_list_tail>, SEMICOLON, <type>, COLON, <identifier_list_tail>, 
+Popped <identifier_list_tail> with token <COLON, null>
+Pushed EPSILON
 
-
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | type | COLON | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declaration_list_tail>, SEMICOLON, <type>, COLON, 
 MATCH: COLON popped with <COLON, null>
 
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | type | 
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declaration_list_tail>, SEMICOLON, <type>, 
+Popped <type> with token <ARRAY, null>
+Pushed: <array_type>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declaration_list_tail>, SEMICOLON, <array_type>, 
+Popped <array_type> with token <ARRAY, null>
+Pushed: <standard_type>, OF, RIGHTBRACKET, INTCONSTANT, DOUBLEDOT, INTCONSTANT, LEFTBRACKET, ARRAY, 
 
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | array_type | 
-
-
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | standard_type | OF | RIGHTBRACKET | INTCONSTANT | DOUBLEDOT | INTCONSTANT | LEFTBRACKET | ARRAY | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declaration_list_tail>, SEMICOLON, <standard_type>, OF, RIGHTBRACKET, INTCONSTANT, DOUBLEDOT, INTCONSTANT, LEFTBRACKET, ARRAY, 
 MATCH: ARRAY popped with <ARRAY, null>
 
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | standard_type | OF | RIGHTBRACKET | INTCONSTANT | DOUBLEDOT | INTCONSTANT | LEFTBRACKET | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declaration_list_tail>, SEMICOLON, <standard_type>, OF, RIGHTBRACKET, INTCONSTANT, DOUBLEDOT, INTCONSTANT, LEFTBRACKET, 
 MATCH: LEFTBRACKET popped with <LEFTBRACKET, null>
 
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | standard_type | OF | RIGHTBRACKET | INTCONSTANT | DOUBLEDOT | INTCONSTANT | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declaration_list_tail>, SEMICOLON, <standard_type>, OF, RIGHTBRACKET, INTCONSTANT, DOUBLEDOT, INTCONSTANT, 
 MATCH: INTCONSTANT popped with <INTCONSTANT, 1>
 
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | standard_type | OF | RIGHTBRACKET | INTCONSTANT | DOUBLEDOT | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declaration_list_tail>, SEMICOLON, <standard_type>, OF, RIGHTBRACKET, INTCONSTANT, DOUBLEDOT, 
 MATCH: DOUBLEDOT popped with <DOUBLEDOT, null>
 
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | standard_type | OF | RIGHTBRACKET | INTCONSTANT | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declaration_list_tail>, SEMICOLON, <standard_type>, OF, RIGHTBRACKET, INTCONSTANT, 
 MATCH: INTCONSTANT popped with <INTCONSTANT, 5>
 
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | standard_type | OF | RIGHTBRACKET | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declaration_list_tail>, SEMICOLON, <standard_type>, OF, RIGHTBRACKET, 
 MATCH: RIGHTBRACKET popped with <RIGHTBRACKET, null>
 
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | standard_type | OF | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declaration_list_tail>, SEMICOLON, <standard_type>, OF, 
 MATCH: OF popped with <OF, null>
 
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | standard_type | 
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declaration_list_tail>, SEMICOLON, <standard_type>, 
+Popped <standard_type> with token <INTEGER, null>
+Pushed: INTEGER, 
 
-
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | INTEGER | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declaration_list_tail>, SEMICOLON, INTEGER, 
 MATCH: INTEGER popped with <INTEGER, null>
 
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | SEMICOLON | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declaration_list_tail>, SEMICOLON, 
 MATCH: SEMICOLON popped with <SEMICOLON, null>
 
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | declaration_list_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, <declaration_list_tail>, 
+Popped <declaration_list_tail> with token <BEGIN, null>
+Pushed EPSILON
 
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, <sub_declarations>, 
+Popped <sub_declarations> with token <BEGIN, null>
+Pushed EPSILON
 
-ENDOFFILE | ENDMARKER | compound_statement | sub_declarations | 
+STACK ::==> ENDOFFILE, ENDMARKER, <compound_statement>, 
+Popped <compound_statement> with token <BEGIN, null>
+Pushed: END, <statement_list>, BEGIN, 
 
-
-ENDOFFILE | ENDMARKER | compound_statement | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list | BEGIN | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list>, BEGIN, 
 MATCH: BEGIN popped with <BEGIN, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list>, 
+Popped <statement_list> with token <IDENTIFIER, m>
+Pushed: <statement_list_tail>, <statement>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, 
+Popped <statement> with token <IDENTIFIER, m>
+Pushed: <elementary_statement>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <elementary_statement>, 
+Popped <elementary_statement> with token <IDENTIFIER, m>
+Pushed: <es_tail>, IDENTIFIER, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | elementary_statement | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | IDENTIFIER | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <es_tail>, IDENTIFIER, 
 MATCH: IDENTIFIER popped with <IDENTIFIER, m>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <es_tail>, 
+Popped <es_tail> with token <LEFTBRACKET, null>
+Pushed: <expression>, ASSIGNOP, <subscript>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, <subscript>, 
+Popped <subscript> with token <LEFTBRACKET, null>
+Pushed: RIGHTBRACKET, <expression>, LEFTBRACKET, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | subscript | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression | LEFTBRACKET | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression>, LEFTBRACKET, 
 MATCH: LEFTBRACKET popped with <LEFTBRACKET, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression>, 
+Popped <expression> with token <INTCONSTANT, 1>
+Pushed: <expression_tail>, <simple_expression>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression>, 
+Popped <simple_expression> with token <INTCONSTANT, 1>
+Pushed: <simple_expression_tail>, <term>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term>, 
+Popped <term> with token <INTCONSTANT, 1>
+Pushed: <term_tail>, <factor>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor>, 
+Popped <factor> with token <INTCONSTANT, 1>
+Pushed: <constant>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, <constant>, 
+Popped <constant> with token <INTCONSTANT, 1>
+Pushed: INTCONSTANT, 
 
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | factor | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | constant | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | INTCONSTANT | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, INTCONSTANT, 
 MATCH: INTCONSTANT popped with <INTCONSTANT, 1>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, 
+Popped <term_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, 
+Popped <simple_expression_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, 
+Popped <expression_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
 
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, 
 MATCH: RIGHTBRACKET popped with <RIGHTBRACKET, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, 
 MATCH: ASSIGNOP popped with <ASSIGNOP, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, 
+Popped <expression> with token <INTCONSTANT, 1>
+Pushed: <expression_tail>, <simple_expression>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression>, 
+Popped <simple_expression> with token <INTCONSTANT, 1>
+Pushed: <simple_expression_tail>, <term>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, <term>, 
+Popped <term> with token <INTCONSTANT, 1>
+Pushed: <term_tail>, <factor>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor>, 
+Popped <factor> with token <INTCONSTANT, 1>
+Pushed: <constant>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <constant>, 
+Popped <constant> with token <INTCONSTANT, 1>
+Pushed: INTCONSTANT, 
 
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | factor | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | constant | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | INTCONSTANT | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, INTCONSTANT, 
 MATCH: INTCONSTANT popped with <INTCONSTANT, 1>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, 
+Popped <term_tail> with token <SEMICOLON, null>
+Pushed EPSILON
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, 
+Popped <simple_expression_tail> with token <SEMICOLON, null>
+Pushed EPSILON
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, 
+Popped <expression_tail> with token <SEMICOLON, null>
+Pushed EPSILON
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, 
+Popped <statement_list_tail> with token <SEMICOLON, null>
+Pushed: <statement_list_tail>, <statement>, SEMICOLON, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | SEMICOLON | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, SEMICOLON, 
 MATCH: SEMICOLON popped with <SEMICOLON, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, 
+Popped <statement> with token <IDENTIFIER, m>
+Pushed: <elementary_statement>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <elementary_statement>, 
+Popped <elementary_statement> with token <IDENTIFIER, m>
+Pushed: <es_tail>, IDENTIFIER, 
 
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | elementary_statement | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | IDENTIFIER | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <es_tail>, IDENTIFIER, 
 MATCH: IDENTIFIER popped with <IDENTIFIER, m>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <es_tail>, 
+Popped <es_tail> with token <LEFTBRACKET, null>
+Pushed: <expression>, ASSIGNOP, <subscript>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, <subscript>, 
+Popped <subscript> with token <LEFTBRACKET, null>
+Pushed: RIGHTBRACKET, <expression>, LEFTBRACKET, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | subscript | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression | LEFTBRACKET | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression>, LEFTBRACKET, 
 MATCH: LEFTBRACKET popped with <LEFTBRACKET, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression>, 
+Popped <expression> with token <INTCONSTANT, 2>
+Pushed: <expression_tail>, <simple_expression>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression>, 
+Popped <simple_expression> with token <INTCONSTANT, 2>
+Pushed: <simple_expression_tail>, <term>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term>, 
+Popped <term> with token <INTCONSTANT, 2>
+Pushed: <term_tail>, <factor>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor>, 
+Popped <factor> with token <INTCONSTANT, 2>
+Pushed: <constant>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, <constant>, 
+Popped <constant> with token <INTCONSTANT, 2>
+Pushed: INTCONSTANT, 
 
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | factor | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | constant | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | INTCONSTANT | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, INTCONSTANT, 
 MATCH: INTCONSTANT popped with <INTCONSTANT, 2>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, 
+Popped <term_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, 
+Popped <simple_expression_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, 
+Popped <expression_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
 
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, 
 MATCH: RIGHTBRACKET popped with <RIGHTBRACKET, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, 
 MATCH: ASSIGNOP popped with <ASSIGNOP, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, 
+Popped <expression> with token <INTCONSTANT, 2>
+Pushed: <expression_tail>, <simple_expression>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression>, 
+Popped <simple_expression> with token <INTCONSTANT, 2>
+Pushed: <simple_expression_tail>, <term>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, <term>, 
+Popped <term> with token <INTCONSTANT, 2>
+Pushed: <term_tail>, <factor>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor>, 
+Popped <factor> with token <INTCONSTANT, 2>
+Pushed: <constant>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <constant>, 
+Popped <constant> with token <INTCONSTANT, 2>
+Pushed: INTCONSTANT, 
 
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | factor | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | constant | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | INTCONSTANT | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, INTCONSTANT, 
 MATCH: INTCONSTANT popped with <INTCONSTANT, 2>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, 
+Popped <term_tail> with token <SEMICOLON, null>
+Pushed EPSILON
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, 
+Popped <simple_expression_tail> with token <SEMICOLON, null>
+Pushed EPSILON
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, 
+Popped <expression_tail> with token <SEMICOLON, null>
+Pushed EPSILON
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, 
+Popped <statement_list_tail> with token <SEMICOLON, null>
+Pushed: <statement_list_tail>, <statement>, SEMICOLON, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | SEMICOLON | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, SEMICOLON, 
 MATCH: SEMICOLON popped with <SEMICOLON, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, 
+Popped <statement> with token <IDENTIFIER, m>
+Pushed: <elementary_statement>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <elementary_statement>, 
+Popped <elementary_statement> with token <IDENTIFIER, m>
+Pushed: <es_tail>, IDENTIFIER, 
 
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | elementary_statement | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | IDENTIFIER | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <es_tail>, IDENTIFIER, 
 MATCH: IDENTIFIER popped with <IDENTIFIER, m>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <es_tail>, 
+Popped <es_tail> with token <LEFTBRACKET, null>
+Pushed: <expression>, ASSIGNOP, <subscript>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, <subscript>, 
+Popped <subscript> with token <LEFTBRACKET, null>
+Pushed: RIGHTBRACKET, <expression>, LEFTBRACKET, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | subscript | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression | LEFTBRACKET | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression>, LEFTBRACKET, 
 MATCH: LEFTBRACKET popped with <LEFTBRACKET, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression>, 
+Popped <expression> with token <INTCONSTANT, 3>
+Pushed: <expression_tail>, <simple_expression>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression>, 
+Popped <simple_expression> with token <INTCONSTANT, 3>
+Pushed: <simple_expression_tail>, <term>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term>, 
+Popped <term> with token <INTCONSTANT, 3>
+Pushed: <term_tail>, <factor>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor>, 
+Popped <factor> with token <INTCONSTANT, 3>
+Pushed: <constant>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, <constant>, 
+Popped <constant> with token <INTCONSTANT, 3>
+Pushed: INTCONSTANT, 
 
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | factor | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | constant | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | INTCONSTANT | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, INTCONSTANT, 
 MATCH: INTCONSTANT popped with <INTCONSTANT, 3>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, 
+Popped <term_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, 
+Popped <simple_expression_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, 
+Popped <expression_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
 
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, 
 MATCH: RIGHTBRACKET popped with <RIGHTBRACKET, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, 
 MATCH: ASSIGNOP popped with <ASSIGNOP, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, 
+Popped <expression> with token <INTCONSTANT, 3>
+Pushed: <expression_tail>, <simple_expression>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression>, 
+Popped <simple_expression> with token <INTCONSTANT, 3>
+Pushed: <simple_expression_tail>, <term>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, <term>, 
+Popped <term> with token <INTCONSTANT, 3>
+Pushed: <term_tail>, <factor>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor>, 
+Popped <factor> with token <INTCONSTANT, 3>
+Pushed: <constant>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <constant>, 
+Popped <constant> with token <INTCONSTANT, 3>
+Pushed: INTCONSTANT, 
 
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | factor | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | constant | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | INTCONSTANT | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, INTCONSTANT, 
 MATCH: INTCONSTANT popped with <INTCONSTANT, 3>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, 
+Popped <term_tail> with token <SEMICOLON, null>
+Pushed EPSILON
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, 
+Popped <simple_expression_tail> with token <SEMICOLON, null>
+Pushed EPSILON
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, 
+Popped <expression_tail> with token <SEMICOLON, null>
+Pushed EPSILON
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, 
+Popped <statement_list_tail> with token <SEMICOLON, null>
+Pushed: <statement_list_tail>, <statement>, SEMICOLON, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | SEMICOLON | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, SEMICOLON, 
 MATCH: SEMICOLON popped with <SEMICOLON, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, 
+Popped <statement> with token <IDENTIFIER, m>
+Pushed: <elementary_statement>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <elementary_statement>, 
+Popped <elementary_statement> with token <IDENTIFIER, m>
+Pushed: <es_tail>, IDENTIFIER, 
 
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | elementary_statement | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | IDENTIFIER | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <es_tail>, IDENTIFIER, 
 MATCH: IDENTIFIER popped with <IDENTIFIER, m>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <es_tail>, 
+Popped <es_tail> with token <LEFTBRACKET, null>
+Pushed: <expression>, ASSIGNOP, <subscript>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, <subscript>, 
+Popped <subscript> with token <LEFTBRACKET, null>
+Pushed: RIGHTBRACKET, <expression>, LEFTBRACKET, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | subscript | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression | LEFTBRACKET | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression>, LEFTBRACKET, 
 MATCH: LEFTBRACKET popped with <LEFTBRACKET, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression>, 
+Popped <expression> with token <INTCONSTANT, 4>
+Pushed: <expression_tail>, <simple_expression>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression>, 
+Popped <simple_expression> with token <INTCONSTANT, 4>
+Pushed: <simple_expression_tail>, <term>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term>, 
+Popped <term> with token <INTCONSTANT, 4>
+Pushed: <term_tail>, <factor>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor>, 
+Popped <factor> with token <INTCONSTANT, 4>
+Pushed: <constant>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, <constant>, 
+Popped <constant> with token <INTCONSTANT, 4>
+Pushed: INTCONSTANT, 
 
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | factor | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | constant | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | INTCONSTANT | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, INTCONSTANT, 
 MATCH: INTCONSTANT popped with <INTCONSTANT, 4>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, 
+Popped <term_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, 
+Popped <simple_expression_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, 
+Popped <expression_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
 
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, 
 MATCH: RIGHTBRACKET popped with <RIGHTBRACKET, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, 
 MATCH: ASSIGNOP popped with <ASSIGNOP, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, 
+Popped <expression> with token <INTCONSTANT, 4>
+Pushed: <expression_tail>, <simple_expression>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression>, 
+Popped <simple_expression> with token <INTCONSTANT, 4>
+Pushed: <simple_expression_tail>, <term>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, <term>, 
+Popped <term> with token <INTCONSTANT, 4>
+Pushed: <term_tail>, <factor>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor>, 
+Popped <factor> with token <INTCONSTANT, 4>
+Pushed: <constant>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <constant>, 
+Popped <constant> with token <INTCONSTANT, 4>
+Pushed: INTCONSTANT, 
 
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | factor | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | constant | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | INTCONSTANT | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, INTCONSTANT, 
 MATCH: INTCONSTANT popped with <INTCONSTANT, 4>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, 
+Popped <term_tail> with token <SEMICOLON, null>
+Pushed EPSILON
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, 
+Popped <simple_expression_tail> with token <SEMICOLON, null>
+Pushed EPSILON
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, 
+Popped <expression_tail> with token <SEMICOLON, null>
+Pushed EPSILON
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, 
+Popped <statement_list_tail> with token <SEMICOLON, null>
+Pushed: <statement_list_tail>, <statement>, SEMICOLON, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | SEMICOLON | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, SEMICOLON, 
 MATCH: SEMICOLON popped with <SEMICOLON, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, 
+Popped <statement> with token <IDENTIFIER, m>
+Pushed: <elementary_statement>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <elementary_statement>, 
+Popped <elementary_statement> with token <IDENTIFIER, m>
+Pushed: <es_tail>, IDENTIFIER, 
 
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | elementary_statement | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | IDENTIFIER | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <es_tail>, IDENTIFIER, 
 MATCH: IDENTIFIER popped with <IDENTIFIER, m>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <es_tail>, 
+Popped <es_tail> with token <LEFTBRACKET, null>
+Pushed: <expression>, ASSIGNOP, <subscript>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, <subscript>, 
+Popped <subscript> with token <LEFTBRACKET, null>
+Pushed: RIGHTBRACKET, <expression>, LEFTBRACKET, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | subscript | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression | LEFTBRACKET | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression>, LEFTBRACKET, 
 MATCH: LEFTBRACKET popped with <LEFTBRACKET, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression>, 
+Popped <expression> with token <INTCONSTANT, 5>
+Pushed: <expression_tail>, <simple_expression>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression>, 
+Popped <simple_expression> with token <INTCONSTANT, 5>
+Pushed: <simple_expression_tail>, <term>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term>, 
+Popped <term> with token <INTCONSTANT, 5>
+Pushed: <term_tail>, <factor>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor>, 
+Popped <factor> with token <INTCONSTANT, 5>
+Pushed: <constant>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, <constant>, 
+Popped <constant> with token <INTCONSTANT, 5>
+Pushed: INTCONSTANT, 
 
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | factor | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | constant | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | INTCONSTANT | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, INTCONSTANT, 
 MATCH: INTCONSTANT popped with <INTCONSTANT, 5>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, 
+Popped <term_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, 
+Popped <simple_expression_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | simple_expression_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, <expression_tail>, 
+Popped <expression_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
 
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | expression_tail | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | RIGHTBRACKET | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, RIGHTBRACKET, 
 MATCH: RIGHTBRACKET popped with <RIGHTBRACKET, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | ASSIGNOP | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, ASSIGNOP, 
 MATCH: ASSIGNOP popped with <ASSIGNOP, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression>, 
+Popped <expression> with token <INTCONSTANT, 5>
+Pushed: <expression_tail>, <simple_expression>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression>, 
+Popped <simple_expression> with token <INTCONSTANT, 5>
+Pushed: <simple_expression_tail>, <term>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, <term>, 
+Popped <term> with token <INTCONSTANT, 5>
+Pushed: <term_tail>, <factor>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor>, 
+Popped <factor> with token <INTCONSTANT, 5>
+Pushed: <constant>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <constant>, 
+Popped <constant> with token <INTCONSTANT, 5>
+Pushed: INTCONSTANT, 
 
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | factor | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | constant | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | INTCONSTANT | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, INTCONSTANT, 
 MATCH: INTCONSTANT popped with <INTCONSTANT, 5>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | term_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, 
+Popped <term_tail> with token <SEMICOLON, null>
+Pushed EPSILON
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, <simple_expression_tail>, 
+Popped <simple_expression_tail> with token <SEMICOLON, null>
+Pushed EPSILON
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | simple_expression_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <expression_tail>, 
+Popped <expression_tail> with token <SEMICOLON, null>
+Pushed EPSILON
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, 
+Popped <statement_list_tail> with token <SEMICOLON, null>
+Pushed: <statement_list_tail>, <statement>, SEMICOLON, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | expression_tail | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | SEMICOLON | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, SEMICOLON, 
 MATCH: SEMICOLON popped with <SEMICOLON, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, 
+Popped <statement> with token <IDENTIFIER, write>
+Pushed: <elementary_statement>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <elementary_statement>, 
+Popped <elementary_statement> with token <IDENTIFIER, write>
+Pushed: <es_tail>, IDENTIFIER, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | elementary_statement | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | IDENTIFIER | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <es_tail>, IDENTIFIER, 
 MATCH: IDENTIFIER popped with <IDENTIFIER, write>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <es_tail>, 
+Popped <es_tail> with token <LEFTPAREN, null>
+Pushed: <parameters>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <parameters>, 
+Popped <parameters> with token <LEFTPAREN, null>
+Pushed: RIGHTPAREN, <expression_list>, LEFTPAREN, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | parameters | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list | LEFTPAREN | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list>, LEFTPAREN, 
 MATCH: LEFTPAREN popped with <LEFTPAREN, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list>, 
+Popped <expression_list> with token <IDENTIFIER, aff>
+Pushed: <expression_list_tail>, <expression>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression>, 
+Popped <expression> with token <IDENTIFIER, aff>
+Pushed: <expression_tail>, <simple_expression>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression>, 
+Popped <simple_expression> with token <IDENTIFIER, aff>
+Pushed: <simple_expression_tail>, <term>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term>, 
+Popped <term> with token <IDENTIFIER, aff>
+Pushed: <term_tail>, <factor>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor>, 
+Popped <factor> with token <IDENTIFIER, aff>
+Pushed: <factor_tail>, IDENTIFIER, 
 
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | factor | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | factor_tail | IDENTIFIER | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor_tail>, IDENTIFIER, 
 MATCH: IDENTIFIER popped with <IDENTIFIER, aff>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | factor_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor_tail>, 
+Popped <factor_tail> with token <LEFTBRACKET, null>
+Pushed: <subscript>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <subscript>, 
+Popped <subscript> with token <LEFTBRACKET, null>
+Pushed: RIGHTBRACKET, <expression>, LEFTBRACKET, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | subscript | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression | LEFTBRACKET | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression>, LEFTBRACKET, 
 MATCH: LEFTBRACKET popped with <LEFTBRACKET, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression>, 
+Popped <expression> with token <INTCONSTANT, 1>
+Pushed: <expression_tail>, <simple_expression>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression>, 
+Popped <simple_expression> with token <INTCONSTANT, 1>
+Pushed: <simple_expression_tail>, <term>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term>, 
+Popped <term> with token <INTCONSTANT, 1>
+Pushed: <term_tail>, <factor>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor>, 
+Popped <factor> with token <INTCONSTANT, 1>
+Pushed: <constant>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression_tail | term | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, <constant>, 
+Popped <constant> with token <INTCONSTANT, 1>
+Pushed: INTCONSTANT, 
 
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | factor | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | constant | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | INTCONSTANT | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, INTCONSTANT, 
 MATCH: INTCONSTANT popped with <INTCONSTANT, 1>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, 
+Popped <term_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, 
+Popped <simple_expression_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, 
+Popped <expression_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
 
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, 
 MATCH: RIGHTBRACKET popped with <RIGHTBRACKET, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, 
+Popped <term_tail> with token <RIGHTPAREN, null>
+Pushed EPSILON
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, 
+Popped <simple_expression_tail> with token <RIGHTPAREN, null>
+Pushed EPSILON
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, 
+Popped <expression_tail> with token <RIGHTPAREN, null>
+Pushed EPSILON
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, 
+Popped <expression_list_tail> with token <RIGHTPAREN, null>
+Pushed EPSILON
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, 
 MATCH: RIGHTPAREN popped with <RIGHTPAREN, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, 
+Popped <statement_list_tail> with token <SEMICOLON, null>
+Pushed: <statement_list_tail>, <statement>, SEMICOLON, 
 
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | SEMICOLON | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, SEMICOLON, 
 MATCH: SEMICOLON popped with <SEMICOLON, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, 
+Popped <statement> with token <IDENTIFIER, write>
+Pushed: <elementary_statement>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <elementary_statement>, 
+Popped <elementary_statement> with token <IDENTIFIER, write>
+Pushed: <es_tail>, IDENTIFIER, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | statement | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | elementary_statement | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | IDENTIFIER | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <es_tail>, IDENTIFIER, 
 MATCH: IDENTIFIER popped with <IDENTIFIER, write>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | es_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <es_tail>, 
+Popped <es_tail> with token <LEFTPAREN, null>
+Pushed: <parameters>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <parameters>, 
+Popped <parameters> with token <LEFTPAREN, null>
+Pushed: RIGHTPAREN, <expression_list>, LEFTPAREN, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | parameters | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list | LEFTPAREN | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list>, LEFTPAREN, 
 MATCH: LEFTPAREN popped with <LEFTPAREN, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list>, 
+Popped <expression_list> with token <IDENTIFIER, bff>
+Pushed: <expression_list_tail>, <expression>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression>, 
+Popped <expression> with token <IDENTIFIER, bff>
+Pushed: <expression_tail>, <simple_expression>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression>, 
+Popped <simple_expression> with token <IDENTIFIER, bff>
+Pushed: <simple_expression_tail>, <term>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term>, 
+Popped <term> with token <IDENTIFIER, bff>
+Pushed: <term_tail>, <factor>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor>, 
+Popped <factor> with token <IDENTIFIER, bff>
+Pushed: <factor_tail>, IDENTIFIER, 
 
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | factor | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | factor_tail | IDENTIFIER | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor_tail>, IDENTIFIER, 
 MATCH: IDENTIFIER popped with <IDENTIFIER, bff>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | factor_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor_tail>, 
+Popped <factor_tail> with token <LEFTBRACKET, null>
+Pushed: <subscript>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <subscript>, 
+Popped <subscript> with token <LEFTBRACKET, null>
+Pushed: RIGHTBRACKET, <expression>, LEFTBRACKET, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | subscript | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression | LEFTBRACKET | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression>, LEFTBRACKET, 
 MATCH: LEFTBRACKET popped with <LEFTBRACKET, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression>, 
+Popped <expression> with token <INTCONSTANT, 2>
+Pushed: <expression_tail>, <simple_expression>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression>, 
+Popped <simple_expression> with token <INTCONSTANT, 2>
+Pushed: <simple_expression_tail>, <term>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term>, 
+Popped <term> with token <INTCONSTANT, 2>
+Pushed: <term_tail>, <factor>, 
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor>, 
+Popped <factor> with token <INTCONSTANT, 2>
+Pushed: <constant>, 
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression_tail | term | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, <constant>, 
+Popped <constant> with token <INTCONSTANT, 2>
+Pushed: INTCONSTANT, 
 
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | factor | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | constant | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | INTCONSTANT | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, INTCONSTANT, 
 MATCH: INTCONSTANT popped with <INTCONSTANT, 2>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression_tail | term_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, 
+Popped <term_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, 
+Popped <simple_expression_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | simple_expression_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, 
+Popped <expression_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
 
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | expression_tail | 
-
-
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | RIGHTBRACKET | 
-
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, 
 MATCH: RIGHTBRACKET popped with <RIGHTBRACKET, null>
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | term_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, 
+Popped <term_tail> with token <RIGHTPAREN, null>
+Pushed EPSILON
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, 
+Popped <simple_expression_tail> with token <RIGHTPAREN, null>
+Pushed EPSILON
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expression_tail | simple_expression_tail | 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, 
+Popped <expression_tail> with token <RIGHTPAREN, null>
+Pushed EPSILON
 
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, 
+Popped <expression_list_tail> with token <RIGHTPAREN, null>
+Pushed EPSILON
 
-ENDOFFILE | ENDMARKER | END | statement_list_tail | RIGHTPAREN | expression_list_tail | expressi
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, 
+MATCH: RIGHTPAREN popped with <RIGHTPAREN, null>
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, 
+Popped <statement_list_tail> with token <SEMICOLON, null>
+Pushed: <statement_list_tail>, <statement>, SEMICOLON, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, SEMICOLON, 
+MATCH: SEMICOLON popped with <SEMICOLON, null>
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, 
+Popped <statement> with token <IDENTIFIER, write>
+Pushed: <elementary_statement>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <elementary_statement>, 
+Popped <elementary_statement> with token <IDENTIFIER, write>
+Pushed: <es_tail>, IDENTIFIER, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <es_tail>, IDENTIFIER, 
+MATCH: IDENTIFIER popped with <IDENTIFIER, write>
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <es_tail>, 
+Popped <es_tail> with token <LEFTPAREN, null>
+Pushed: <parameters>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <parameters>, 
+Popped <parameters> with token <LEFTPAREN, null>
+Pushed: RIGHTPAREN, <expression_list>, LEFTPAREN, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list>, LEFTPAREN, 
+MATCH: LEFTPAREN popped with <LEFTPAREN, null>
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list>, 
+Popped <expression_list> with token <IDENTIFIER, cff>
+Pushed: <expression_list_tail>, <expression>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression>, 
+Popped <expression> with token <IDENTIFIER, cff>
+Pushed: <expression_tail>, <simple_expression>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression>, 
+Popped <simple_expression> with token <IDENTIFIER, cff>
+Pushed: <simple_expression_tail>, <term>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term>, 
+Popped <term> with token <IDENTIFIER, cff>
+Pushed: <term_tail>, <factor>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor>, 
+Popped <factor> with token <IDENTIFIER, cff>
+Pushed: <factor_tail>, IDENTIFIER, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor_tail>, IDENTIFIER, 
+MATCH: IDENTIFIER popped with <IDENTIFIER, cff>
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor_tail>, 
+Popped <factor_tail> with token <LEFTBRACKET, null>
+Pushed: <subscript>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <subscript>, 
+Popped <subscript> with token <LEFTBRACKET, null>
+Pushed: RIGHTBRACKET, <expression>, LEFTBRACKET, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression>, LEFTBRACKET, 
+MATCH: LEFTBRACKET popped with <LEFTBRACKET, null>
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression>, 
+Popped <expression> with token <INTCONSTANT, 3>
+Pushed: <expression_tail>, <simple_expression>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression>, 
+Popped <simple_expression> with token <INTCONSTANT, 3>
+Pushed: <simple_expression_tail>, <term>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term>, 
+Popped <term> with token <INTCONSTANT, 3>
+Pushed: <term_tail>, <factor>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor>, 
+Popped <factor> with token <INTCONSTANT, 3>
+Pushed: <constant>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, <constant>, 
+Popped <constant> with token <INTCONSTANT, 3>
+Pushed: INTCONSTANT, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, INTCONSTANT, 
+MATCH: INTCONSTANT popped with <INTCONSTANT, 3>
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, 
+Popped <term_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, 
+Popped <simple_expression_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, 
+Popped <expression_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, 
+MATCH: RIGHTBRACKET popped with <RIGHTBRACKET, null>
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, 
+Popped <term_tail> with token <RIGHTPAREN, null>
+Pushed EPSILON
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, 
+Popped <simple_expression_tail> with token <RIGHTPAREN, null>
+Pushed EPSILON
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, 
+Popped <expression_tail> with token <RIGHTPAREN, null>
+Pushed EPSILON
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, 
+Popped <expression_list_tail> with token <RIGHTPAREN, null>
+Pushed EPSILON
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, 
+MATCH: RIGHTPAREN popped with <RIGHTPAREN, null>
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, 
+Popped <statement_list_tail> with token <SEMICOLON, null>
+Pushed: <statement_list_tail>, <statement>, SEMICOLON, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, SEMICOLON, 
+MATCH: SEMICOLON popped with <SEMICOLON, null>
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, 
+Popped <statement> with token <IDENTIFIER, write>
+Pushed: <elementary_statement>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <elementary_statement>, 
+Popped <elementary_statement> with token <IDENTIFIER, write>
+Pushed: <es_tail>, IDENTIFIER, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <es_tail>, IDENTIFIER, 
+MATCH: IDENTIFIER popped with <IDENTIFIER, write>
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <es_tail>, 
+Popped <es_tail> with token <LEFTPAREN, null>
+Pushed: <parameters>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <parameters>, 
+Popped <parameters> with token <LEFTPAREN, null>
+Pushed: RIGHTPAREN, <expression_list>, LEFTPAREN, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list>, LEFTPAREN, 
+MATCH: LEFTPAREN popped with <LEFTPAREN, null>
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list>, 
+Popped <expression_list> with token <IDENTIFIER, dff>
+Pushed: <expression_list_tail>, <expression>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression>, 
+Popped <expression> with token <IDENTIFIER, dff>
+Pushed: <expression_tail>, <simple_expression>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression>, 
+Popped <simple_expression> with token <IDENTIFIER, dff>
+Pushed: <simple_expression_tail>, <term>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term>, 
+Popped <term> with token <IDENTIFIER, dff>
+Pushed: <term_tail>, <factor>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor>, 
+Popped <factor> with token <IDENTIFIER, dff>
+Pushed: <factor_tail>, IDENTIFIER, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor_tail>, IDENTIFIER, 
+MATCH: IDENTIFIER popped with <IDENTIFIER, dff>
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor_tail>, 
+Popped <factor_tail> with token <LEFTBRACKET, null>
+Pushed: <subscript>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <subscript>, 
+Popped <subscript> with token <LEFTBRACKET, null>
+Pushed: RIGHTBRACKET, <expression>, LEFTBRACKET, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression>, LEFTBRACKET, 
+MATCH: LEFTBRACKET popped with <LEFTBRACKET, null>
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression>, 
+Popped <expression> with token <INTCONSTANT, 4>
+Pushed: <expression_tail>, <simple_expression>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression>, 
+Popped <simple_expression> with token <INTCONSTANT, 4>
+Pushed: <simple_expression_tail>, <term>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term>, 
+Popped <term> with token <INTCONSTANT, 4>
+Pushed: <term_tail>, <factor>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor>, 
+Popped <factor> with token <INTCONSTANT, 4>
+Pushed: <constant>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, <constant>, 
+Popped <constant> with token <INTCONSTANT, 4>
+Pushed: INTCONSTANT, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, INTCONSTANT, 
+MATCH: INTCONSTANT popped with <INTCONSTANT, 4>
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, 
+Popped <term_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, 
+Popped <simple_expression_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, 
+Popped <expression_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, 
+MATCH: RIGHTBRACKET popped with <RIGHTBRACKET, null>
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, 
+Popped <term_tail> with token <RIGHTPAREN, null>
+Pushed EPSILON
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, 
+Popped <simple_expression_tail> with token <RIGHTPAREN, null>
+Pushed EPSILON
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, 
+Popped <expression_tail> with token <RIGHTPAREN, null>
+Pushed EPSILON
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, 
+Popped <expression_list_tail> with token <RIGHTPAREN, null>
+Pushed EPSILON
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, 
+MATCH: RIGHTPAREN popped with <RIGHTPAREN, null>
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, 
+Popped <statement_list_tail> with token <SEMICOLON, null>
+Pushed: <statement_list_tail>, <statement>, SEMICOLON, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, SEMICOLON, 
+MATCH: SEMICOLON popped with <SEMICOLON, null>
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <statement>, 
+Popped <statement> with token <IDENTIFIER, write>
+Pushed: <elementary_statement>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <elementary_statement>, 
+Popped <elementary_statement> with token <IDENTIFIER, write>
+Pushed: <es_tail>, IDENTIFIER, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <es_tail>, IDENTIFIER, 
+MATCH: IDENTIFIER popped with <IDENTIFIER, write>
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <es_tail>, 
+Popped <es_tail> with token <LEFTPAREN, null>
+Pushed: <parameters>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, <parameters>, 
+Popped <parameters> with token <LEFTPAREN, null>
+Pushed: RIGHTPAREN, <expression_list>, LEFTPAREN, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list>, LEFTPAREN, 
+MATCH: LEFTPAREN popped with <LEFTPAREN, null>
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list>, 
+Popped <expression_list> with token <IDENTIFIER, eff>
+Pushed: <expression_list_tail>, <expression>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression>, 
+Popped <expression> with token <IDENTIFIER, eff>
+Pushed: <expression_tail>, <simple_expression>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression>, 
+Popped <simple_expression> with token <IDENTIFIER, eff>
+Pushed: <simple_expression_tail>, <term>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term>, 
+Popped <term> with token <IDENTIFIER, eff>
+Pushed: <term_tail>, <factor>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor>, 
+Popped <factor> with token <IDENTIFIER, eff>
+Pushed: <factor_tail>, IDENTIFIER, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor_tail>, IDENTIFIER, 
+MATCH: IDENTIFIER popped with <IDENTIFIER, eff>
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor_tail>, 
+Popped <factor_tail> with token <LEFTBRACKET, null>
+Pushed: <subscript>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, <subscript>, 
+Popped <subscript> with token <LEFTBRACKET, null>
+Pushed: RIGHTBRACKET, <expression>, LEFTBRACKET, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression>, LEFTBRACKET, 
+MATCH: LEFTBRACKET popped with <LEFTBRACKET, null>
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression>, 
+Popped <expression> with token <INTCONSTANT, 5>
+Pushed: <expression_tail>, <simple_expression>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression>, 
+Popped <simple_expression> with token <INTCONSTANT, 5>
+Pushed: <simple_expression_tail>, <term>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term>, 
+Popped <term> with token <INTCONSTANT, 5>
+Pushed: <term_tail>, <factor>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, <factor>, 
+Popped <factor> with token <INTCONSTANT, 5>
+Pushed: <constant>, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, <constant>, 
+Popped <constant> with token <INTCONSTANT, 5>
+Pushed: INTCONSTANT, 
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, INTCONSTANT, 
+MATCH: INTCONSTANT popped with <INTCONSTANT, 5>
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, <term_tail>, 
+Popped <term_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, <simple_expression_tail>, 
+Popped <simple_expression_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, <expression_tail>, 
+Popped <expression_tail> with token <RIGHTBRACKET, null>
+Pushed EPSILON
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, RIGHTBRACKET, 
+MATCH: RIGHTBRACKET popped with <RIGHTBRACKET, null>
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, <term_tail>, 
+Popped <term_tail> with token <RIGHTPAREN, null>
+Pushed EPSILON
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, <simple_expression_tail>, 
+Popped <simple_expression_tail> with token <RIGHTPAREN, null>
+Pushed EPSILON
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, <expression_tail>, 
+Popped <expression_tail> with token <RIGHTPAREN, null>
+Pushed EPSILON
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, <expression_list_tail>, 
+Popped <expression_list_tail> with token <RIGHTPAREN, null>
+Pushed EPSILON
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, RIGHTPAREN, 
+MATCH: RIGHTPAREN popped with <RIGHTPAREN, null>
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, <statement_list_tail>, 
+Popped <statement_list_tail> with token <END, null>
+Pushed EPSILON
+
+STACK ::==> ENDOFFILE, ENDMARKER, END, 
+MATCH: END popped with <END, null>
+
+STACK ::==> ENDOFFILE, ENDMARKER, 
+MATCH: ENDMARKER popped with <ENDMARKER, null>
+
+STACK ::==> ENDOFFILE, 
+MATCH: ENDOFFILE popped with <ENDOFFILE, null>

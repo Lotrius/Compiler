@@ -37,7 +37,6 @@ public class Tokenizer {
     public static void main(String[] args) throws IOException, LexicalError {
         String s = args[0];
         Tokenizer tokenizer = new Tokenizer(s);
-
     }
 
     public Tokenizer(String s) throws IOException, LexicalError {
@@ -61,11 +60,16 @@ public class Tokenizer {
 
     public Token getNextToken() throws IOException, LexicalError {
         Token token = new Token();
-        if (currentLine == null) {
+
+        if ((lastToken.getType() != null)
+                && (lastToken.getType().equals(TokenType.ENDMARKER))) {
             token.setType(TokenType.ENDOFFILE);
             token.setValue(null);
-            bw.close();
+            bw.write(token.toString());
+            //bw.close();
+            return token;
         }
+
         getChar();
 
         if (currentChar == BLANK) {
@@ -94,6 +98,7 @@ public class Tokenizer {
             token = isNumberToken();
         }
 
+        lastToken = token;
         return token;
     }
 
@@ -161,7 +166,7 @@ public class Tokenizer {
         System.out.println(token.toString());
         bw.write(token.toString());
         bw.newLine();
-        lastToken = token;
+        //lastToken = token;
         return token;
     }
 
@@ -274,7 +279,7 @@ public class Tokenizer {
 
         }
         System.out.println(token.toString());
-        lastToken = token;
+        //lastToken = token;
         bw.write(token.toString());
         bw.newLine();
         return token;
@@ -405,7 +410,7 @@ public class Tokenizer {
             default:
                 break;
         }
-        lastToken = token;
+        //lastToken = token;
         System.out.println(token.toString());
         bw.write(token.toString());
         bw.newLine();

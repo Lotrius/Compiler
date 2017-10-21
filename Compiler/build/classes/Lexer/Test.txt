@@ -8,7 +8,7 @@ begin
 	m[4] := 4;
 	m[5] := 5;
 
-	write(aff[1]);
+	write(aff[1];
 	write(bff[2]);
 	write(cff[3]);
 	write(dff[4]);

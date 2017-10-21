@@ -63,7 +63,7 @@ public class Parser {
         File fout = new File("parseout.txt");
         FileOutputStream fos = new FileOutputStream(fout);
         bw = new BufferedWriter(new OutputStreamWriter(fos));
-        
+
         parse();
         bw.close();
     }
@@ -75,24 +75,25 @@ public class Parser {
         stack.push(NonTerminal.Goal);
 
         while (!stack.empty() && !error) {
-            
-            
-            
+
             System.out.println();
             bw.newLine();
+            System.out.print("STACK ::==> ");
+            bw.write("STACK ::==> ");
             for (GrammarSymbol gs : stack) {
-			System.out.print(gs + " | ");
-                        bw.write(gs + " | ");
+                if (gs.isNonTerminal()) {
+                    System.out.print("<" + gs + "> , ");
+                    bw.write("<" + gs + ">, ");
+                } else {
+                    System.out.print(gs + ", ");
+                    bw.write(gs + ", ");
+                }
 
-		}
-		//new line for each new stack printed
-                bw.newLine();
-                bw.newLine();
-		System.out.println();
-                System.out.println();
-                
-                
-                
+            }
+            //new line for each new stack printed
+            bw.newLine();
+            System.out.println();
+
             if (currentToken.getType() == null) {
                 currentToken = tokenizer.getNextToken();
                 continue;
@@ -115,16 +116,40 @@ public class Parser {
                 if (entry == 999) {
                     System.out.println("Error: Unexpected " + currentToken + " predicted " + predicted);
                     error = true;
-                } else if (entry < 0); 
-                else {
+                } else if (entry < 0) {
+                    System.out.println("Popped <" + predicted + "> with token " + currentToken);
+                    bw.write("Popped <" + predicted + "> with token " + currentToken);
+                    bw.newLine();
+                    System.out.println("Pushed EPSILON");
+                    bw.write("Pushed EPSILON");
+                    bw.newLine();
+                } else {
                     GrammarSymbol[] rule = rhsTable.getRule(entry);
                     //iterate from end of array and push the GrammarSymbols onto parse stack
                     int len = rule.length - 1;
+                    System.out.println("Popped <" + predicted + "> with token " + currentToken);
+                    bw.write("Popped <" + predicted + "> with token " + currentToken);
+                    bw.newLine();
+                    System.out.print("Pushed: ");
+                    bw.write("Pushed: ");
                     for (int i = len; i >= 0; i--) {
                         stack.push(rule[i]);
+                        if (rule[i].isNonTerminal()) {
+                            System.out.print("<" + rule[i] + ">, ");
+                            bw.write("<" + rule[i] + ">, ");
+                        } else {
+                            System.out.print(rule[i] + ", ");
+                            bw.write(rule[i] + ", ");
+                        }
+
                     }
+                    System.out.println();
+                    bw.newLine();
                 }
             }
+        }
+        if (stack.empty()) {
+            System.out.println("ACCEPTED");
         }
     }
 }

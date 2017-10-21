@@ -1,4 +1,3 @@
-<null, null>
 <PROGRAM, null>
 <IDENTIFIER, arrayTest>
 <LEFTPAREN, null>
@@ -7,7 +6,6 @@
 <IDENTIFIER, output>
 <RIGHTPAREN, null>
 <SEMICOLON, null>
-<null, null>
 <null, null>
 <VAR, null>
 <null, null>
@@ -22,7 +20,6 @@
 <OF, null>
 <INTEGER, null>
 <SEMICOLON, null>
-<null, null>
 <BEGIN, null>
 <null, null>
 <IDENTIFIER, m>
@@ -68,15 +65,14 @@
 <null, null>
 <IDENTIFIER, write>
 <LEFTPAREN, null>
-<IDENTIFIER, m>
+<IDENTIFIER, aff>
 <LEFTBRACKET, null>
 <INTCONSTANT, 1>
 <RIGHTBRACKET, null>
-<SEMICOLON, null>
 <null, null>
 <IDENTIFIER, write>
 <LEFTPAREN, null>
-<IDENTIFIER, m>
+<IDENTIFIER, bff>
 <LEFTBRACKET, null>
 <INTCONSTANT, 2>
 <RIGHTBRACKET, null>
@@ -84,7 +80,7 @@
 <null, null>
 <IDENTIFIER, write>
 <LEFTPAREN, null>
-<IDENTIFIER, m>
+<IDENTIFIER, cff>
 <LEFTBRACKET, null>
 <INTCONSTANT, 3>
 <RIGHTBRACKET, null>
@@ -92,7 +88,7 @@
 <null, null>
 <IDENTIFIER, write>
 <LEFTPAREN, null>
-<IDENTIFIER, m>
+<IDENTIFIER, dff>
 <LEFTBRACKET, null>
 <INTCONSTANT, 4>
 <RIGHTBRACKET, null>
@@ -100,10 +96,10 @@
 <null, null>
 <IDENTIFIER, write>
 <LEFTPAREN, null>
-<IDENTIFIER, m>
+<IDENTIFIER, eff>
 <LEFTBRACKET, null>
 <INTCONSTANT, 5>
 <RIGHTBRACKET, null>
-<null, null>
 <END, null>
 <ENDMARKER, null>
+<ENDOFFILE, null>
