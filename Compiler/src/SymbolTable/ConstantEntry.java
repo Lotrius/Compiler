@@ -5,10 +5,19 @@
  */
 package SymbolTable;
 
+import Parser.TokenType;
+
 /**
  *
  * @author Solomon
  */
-public class ConstantEntry {
+public class ConstantEntry extends SymbolTableEntry {
+    String name;
+    TokenType type;
     
+    public ConstantEntry(String name, TokenType type) {
+        super(name);
+        this.type = type;
+        this.setIsConstant(true);
+    }
 }

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package SymbolTable;
+import Parser.TokenType;
 import java.util.List;
 /**
  *
@@ -14,9 +15,13 @@ public class ProcedureEntry extends SymbolTableEntry {
     String name;
     int numberOfParameters;
     List paramterInfo;
+    TokenType type;
+    
     public ProcedureEntry(String name, int numberOfParamters, List parameterInfo) {
-        this.name = name;
+        super(name);
         this.numberOfParameters = numberOfParamters;
         this.paramterInfo = parameterInfo;
+        this.type = TokenType.PROCEDURE;
+        this.setIsProcedure(true);
     }
 }

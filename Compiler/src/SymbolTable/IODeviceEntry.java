@@ -5,10 +5,18 @@
  */
 package SymbolTable;
 
+import Parser.TokenType;
+
 /**
  *
  * @author Solomon
  */
-public class IODeviceEntry {
+public class IODeviceEntry extends SymbolTableEntry {
+    String name;
+    TokenType type;
     
+    public IODeviceEntry(String name) {
+        super(name);
+        this.type = TokenType.FILE;
+    }
 }

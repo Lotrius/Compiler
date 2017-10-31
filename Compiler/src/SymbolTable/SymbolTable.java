@@ -5,6 +5,8 @@
  */
 package SymbolTable;
 
+import CompilerError.SymbolTableError;
+import Parser.TokenType;
 import java.util.Collections;
 import java.util.Hashtable;
 
@@ -24,11 +26,11 @@ public class SymbolTable {
         return ht.get(entry);
     }
 
-    public void insert(SymbolTableEntry entry) {
-        if (ht.containsValue(entry)) {
-            ht.put(entry.toString(), entry);
+    public void insert(SymbolTableEntry entry) throws SymbolTableError {
+        if (lookup(entry.getName()) == null) {
+            ht.put(entry.getName(), entry);
         } else {
-            //TODO
+            throw SymbolTableError.multipleEntry(entry.getName());
         }
     }
 
@@ -44,10 +46,42 @@ public class SymbolTable {
         SymbolTableEntry main = new ProcedureEntry("MAIN", 0, Collections.emptyList());
         SymbolTableEntry read = new ProcedureEntry("READ", 0, Collections.emptyList());
         SymbolTableEntry write = new ProcedureEntry("WRITE", 0, Collections.emptyList());
-        
+
+        SymbolTableEntry input = new IODeviceEntry("INPUT");
+        SymbolTableEntry output = new IODeviceEntry("OUTPUT");
+
         main.setIsReserved(true);
         read.setIsReserved(true);
         write.setIsReserved(true);
+        input.setIsReserved(true);
+        output.setIsReserved(true);
+
+        ht.put(main.getName(), main);
+        ht.put(read.getName(), read);
+        ht.put(write.getName(), write);
+        ht.put(input.getName(), input);
+        ht.put(output.getName(), output);
+
+    }
+
+    public static void main(String[] args) throws SymbolTableError {
+        SymbolTable h = new SymbolTable();
+        SymbolTableEntry a = new ConstantEntry("a", TokenType.IDENTIFIER);
+        SymbolTableEntry A = new ConstantEntry("A", TokenType.IDENTIFIER);
+        SymbolTableEntry b = new ConstantEntry("b", TokenType.IDENTIFIER);
+        SymbolTableEntry aA = new ConstantEntry("aA", TokenType.IDENTIFIER);
+        SymbolTableEntry Aa = new ConstantEntry("Aa", TokenType.IDENTIFIER);
+        SymbolTableEntry BA = new ConstantEntry("Aa", TokenType.IDENTIFIER);
+        
+        h.insert(a);
+        h.insert(A);
+        h.insert(b);
+        h.insert(aA);
+        h.insert(Aa);
+        // Uncommenting the code below causes the error that we want
+        // h.insert(BA);
+        h.dumpTable();
+
     }
 
 }

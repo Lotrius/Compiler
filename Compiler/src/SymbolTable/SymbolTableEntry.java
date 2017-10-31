@@ -5,8 +5,6 @@
  */
 package SymbolTable;
 
-import Parser.TokenType;
-
 /**
  *
  * @author Solomon
@@ -22,8 +20,10 @@ public class SymbolTableEntry {
     boolean array;
     boolean cons;
     boolean reserved;
+    String name;
 
-    public SymbolTableEntry() {
+    public SymbolTableEntry(String name) {
+        this.name = name;
         this.var = false;
         this.kword = false;
         this.proc = false;
@@ -33,6 +33,10 @@ public class SymbolTableEntry {
         this.array = false;
         this.cons = false;
         this.reserved = false;
+    }
+    
+    public String getName() {
+        return this.name;
     }
 
     public boolean isVariable() {

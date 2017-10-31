@@ -9,6 +9,12 @@ package CompilerError;
  *
  * @author Solomon
  */
-public class SymbolTableError {
+public class SymbolTableError extends CompilerError{
+    public SymbolTableError(String message) {
+        super(message);
+    }
     
+    public static SymbolTableError multipleEntry(String entry) {
+        return new SymbolTableError("Error: Tried to insert " + entry + " multiple times");
+    }
 }

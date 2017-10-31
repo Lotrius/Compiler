@@ -5,10 +5,22 @@
  */
 package SymbolTable;
 
+import Parser.TokenType;
+
 /**
  *
  * @author Solomon
  */
-public class VariableEntry {
-    
+public class VariableEntry extends SymbolTableEntry {
+
+    String name;
+    int address;
+    TokenType type;
+
+    public VariableEntry(String name, int address, TokenType type) {
+        super(name);
+        this.address = address;
+        this.type = type;
+        this.setIsVariable(true);
+    }
 }
