@@ -5,6 +5,7 @@
  */
 package SymbolTable;
 
+import java.util.Collections;
 import java.util.Hashtable;
 
 /**
@@ -30,17 +31,23 @@ public class SymbolTable {
             //TODO
         }
     }
-    
+
     public int size() {
         return ht.size();
     }
-    
+
     public void dumpTable() {
         System.out.println(ht);
     }
-    
+
     public void installBuiltins() {
+        SymbolTableEntry main = new ProcedureEntry("MAIN", 0, Collections.emptyList());
+        SymbolTableEntry read = new ProcedureEntry("READ", 0, Collections.emptyList());
+        SymbolTableEntry write = new ProcedureEntry("WRITE", 0, Collections.emptyList());
         
+        main.setIsReserved(true);
+        read.setIsReserved(true);
+        write.setIsReserved(true);
     }
 
 }
