@@ -3,3 +3,7 @@ I reworked the lexer a bit to fix some of the logic and make it work with the pa
 You need to be within the Parser file to be able to run the program.
 
 The output is displayed on both the terminal and also the file parseout.txt.
+
+-------------------------------------------------------------------
+10/30/17
+Just click run and the code should run the SymbolTable
