@@ -6,8 +6,10 @@
 package Parser;
 
 import CompilerError.LexicalError;
+import CompilerError.SemanticError;
 import Lexer.Token;
 import Lexer.Tokenizer;
+import SemanticActions.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -48,17 +50,19 @@ public class Parser {
     public boolean error = false;
     public boolean dump = false;
     public Tokenizer tokenizer;
+    public SemanticActions semacs;
     public ParseTable parseTable = new ParseTable();
     public RHSTable rhsTable = new RHSTable();
     BufferedWriter bw;
 
-    public static void main(String[] args) throws IOException, LexicalError {
+    public static void main(String[] args) throws IOException, LexicalError, SemanticError {
         String s = args[0];
         Parser parser = new Parser(s);
     }
 
-    public Parser(String s) throws IOException, LexicalError {
+    public Parser(String s) throws IOException, LexicalError, SemanticError {
         tokenizer = new Tokenizer(s);
+        semacs = new SemanticActions();
 
         File fout = new File("parseout.txt");
         FileOutputStream fos = new FileOutputStream(fout);
@@ -68,7 +72,7 @@ public class Parser {
         bw.close();
     }
 
-    public void parse() throws IOException, LexicalError {
+    public void parse() throws IOException, LexicalError, SemanticError {
         Token currentToken = tokenizer.getNextToken();
         stack.clear();
         stack.push(TokenType.ENDOFFILE);
@@ -146,6 +150,9 @@ public class Parser {
                     System.out.println();
                     bw.newLine();
                 }
+            } else if(predicted.isAction()) {
+                SemanticAction action = (SemanticAction) predicted;
+                semacs.execute(action,currentToken);
             }
         }
         if (stack.empty()) {

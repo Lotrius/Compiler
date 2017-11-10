@@ -18,8 +18,8 @@ public class SymbolTable {
 
     private Hashtable<String, SymbolTableEntry> ht;
 
-    public SymbolTable() {
-        ht = new Hashtable(20);
+    public SymbolTable(int size) {
+        ht = new Hashtable(size);
     }
 
     public SymbolTableEntry lookup(String entry) {
@@ -65,7 +65,7 @@ public class SymbolTable {
     }
 
     public static void main(String[] args) throws SymbolTableError {
-        SymbolTable h = new SymbolTable();
+        SymbolTable h = new SymbolTable(100);
         SymbolTableEntry a = new ConstantEntry("a", TokenType.IDENTIFIER);
         SymbolTableEntry A = new ConstantEntry("A", TokenType.IDENTIFIER);
         SymbolTableEntry b = new ConstantEntry("b", TokenType.IDENTIFIER);
