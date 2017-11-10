@@ -49,11 +49,43 @@ public class SemanticActions {
 
         switch (actionNumber) {
 
-            case 1: {
-
-                // fill in semantic action code here 
-            }
-
+            case 1: 
+                insert = true;
+                break;
+            case 2:
+                insert = false;
+                break;
+            case 4:
+                semanticStack.push(token.getType());
+                break;
+            case 6:
+                isArray = true;
+                break;
+            case 7:
+                ConstantEntry cons = new ConstantEntry(token.getValue(), token.getType());
+                semanticStack.push(cons);
+                break;
+            case 9:
+                Token id1 = (Token) semanticStack.pop();
+                IODeviceEntry iod1 = new IODeviceEntry(id1.getValue());
+                globalTable.insert(iod1);
+                iod1.setIsReserved(true);
+                
+                Token id2 = (Token) semanticStack.pop();
+                IODeviceEntry iod2 = new IODeviceEntry(id2.getValue());
+                globalTable.insert(iod2);
+                iod2.setIsReserved(true);
+                
+                Token id3 = (Token) semanticStack.pop();
+                ProcedureEntry pe = new ProcedureEntry(id3.getValue(), 0, new LinkedList<>());
+                
+                insert = false;
+                break;
+                
+            case 13:
+                semanticStack.push(token);
+                break;
+                
         }
     }
 }
