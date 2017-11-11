@@ -4,10 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Father/Desktop/Compiler/Compiler/src/Parser/Parser.java</file>
-            <file>file:/C:/Users/Father/Desktop/Compiler/Compiler/src/Lexer/Token.java</file>
-            <file>file:/C:/Users/Father/Desktop/Compiler/Compiler/src/Parser/RHSTable.java</file>
             <file>file:/C:/Users/Father/Desktop/Compiler/Compiler/src/Lexer/Tokenizer.java</file>
-            <file>file:/C:/Users/Father/Desktop/Compiler/Compiler/src/Parser/NonTerminal.java</file>
+            <file>file:/C:/Users/Father/Desktop/Compiler/Compiler/src/SymbolTable/ProcedureEntry.java</file>
+            <file>file:/C:/Users/Father/Desktop/Compiler/Compiler/src/SemanticActions/SemanticActions.java</file>
+            <file>file:/C:/Users/Father/Desktop/Compiler/Compiler/src/SymbolTable/ConstantEntry.java</file>
+            <file>file:/C:/Users/Father/Desktop/Compiler/Compiler/src/SymbolTable/SymbolTable.java</file>
         </group>
     </open-files>
 </project-private>

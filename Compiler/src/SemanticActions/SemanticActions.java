@@ -46,14 +46,53 @@ public class SemanticActions {
         int actionNumber = action.getIndex();
 
 //		System.out.println("calling action : " + actionNumber + " with token " + token.getType());
-
         switch (actionNumber) {
 
-            case 1: 
+            case 1:
                 insert = true;
                 break;
             case 2:
                 insert = false;
+                break;
+            case 3:
+                TokenType typ = (TokenType) semanticStack.pop();
+                if (isArray) {
+                    ConstantEntry ub = semanticStack.pop();
+                    ConstantEntry lb = semanticStack.pop();
+                    int msize = (ub - lb) + 1;
+                    while (!semanticStack.isEmpty()) {
+                        Token id = (Token) semanticStack.pop();
+                        if (global) {
+                            ArrayEntry entry = new ArrayEntry(id.getValue(), globalMemory, typ, ub, lb);
+                            entry.setType(typ);
+                            entry.upperBound = ub;
+                            entry.lowerBound = lb;
+                            entry.address = globalMemory;
+                            globalTable.insert(entry);
+                            globalMemory += msize;
+                        } else {
+                            ArrayEntry entry = new ArrayEntry(id.getValue(), localMemory, typ, ub, lb);
+                            entry.address = localMemory;
+                            localMemory += msize;
+                        }
+                    }
+                } else {
+                    while (!semanticStack.isEmpty()) {
+                        Token id = (Token) semanticStack.pop();
+                        if (global) {
+                            VariableEntry entry = new VariableEntry(id.getValue(), globalMemory, typ);
+                            entry.setType(typ);
+                            entry.address = globalMemory;
+                            globalTable.insert(entry);
+                            globalMemory += 1;
+                        } else {
+                            VariableEntry entry = new VariableEntry(id.getValue(), localMemory, typ);
+                            entry.address = localMemory;
+                            localMemory += 1;
+                        }
+                    }
+                }
+                isArray = false;
                 break;
             case 4:
                 semanticStack.push(token.getType());
@@ -70,22 +109,28 @@ public class SemanticActions {
                 IODeviceEntry iod1 = new IODeviceEntry(id1.getValue());
                 globalTable.insert(iod1);
                 iod1.setIsReserved(true);
-                
+
                 Token id2 = (Token) semanticStack.pop();
                 IODeviceEntry iod2 = new IODeviceEntry(id2.getValue());
                 globalTable.insert(iod2);
                 iod2.setIsReserved(true);
-                
+
                 Token id3 = (Token) semanticStack.pop();
                 ProcedureEntry pe = new ProcedureEntry(id3.getValue(), 0, new LinkedList<>());
-                
+
                 insert = false;
                 break;
-                
+
             case 13:
                 semanticStack.push(token);
                 break;
-                
+
+        }
+    }
+
+    public void semanticStackDump() {
+        for (Object obj : semanticStack) {
+            System.out.println(obj + " ");
         }
     }
 }
