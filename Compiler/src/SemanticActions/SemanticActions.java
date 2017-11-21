@@ -26,11 +26,13 @@ public class SemanticActions {
     private SymbolTable globalTable;
     private SymbolTable constantTable;
     private int tableSize = 100;
+    private Quadruple quadruple;
+    private int GLOBAL_STORE = 0;
 
     public SemanticActions() {
         semanticStack = new Stack<Object>();
 //		quads = new Quadruples();
-        insert = false;
+        insert = true;
         isArray = false;
         isParam = false;
         global = true;
@@ -124,8 +126,64 @@ public class SemanticActions {
             case 13:
                 semanticStack.push(token);
                 break;
+            case 30:
+                break;
+            case 31:
+                break;
+            case 40:
+                break;
+            case 41:
+                break;
+            case 42:
+                break;
+            case 43:
+                break;
+            case 44:
+                break;
+            case 45:
+                break;
+            case 46:
+                break;
+            case 48:
+                break;
+            case 55:
+                backpatch(GLOBAL_STORE, globalMemory);
+                gen("free", globalMemory);
+                gen("PROCEND");
+                break;
+            case 56:
+                gen("PROCBEGIN", "main");
+                GLOBAL_STORE = quadruple.getNextQuad();
+                gen("alloc", "_");
+                break;
 
         }
+    }
+
+    public VariableEntry create(String name, TokenType type) {
+        VariableEntry $$NAME = new VariableEntry(name, -globalMemory, type);
+        globalTable.insert($$NAME);
+        globalMemory++;
+        return $$NAME;
+    }
+
+    public void gen(String tviCode) {
+        String[] quad = {tviCode, null, null, null};
+        quadruple.addQuad(quad);
+    }
+
+    public void gen(String tviCode, int operand1) {
+        String[] quad = {tviCode, String.valueOf(operand1), null, null};
+        quadruple.addQuad(quad);
+    }
+
+    private void gen(String tviCode, String operand1) {
+        String[] quad = {tviCode, operand1, null, null};
+        quadruple.addQuad(quad);
+    }
+
+    public void backpatch(int p, int i) {
+        quadruple.setField(i, 1, Integer.toString(p));
     }
 
     public void semanticStackDump() {
