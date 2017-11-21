@@ -11,6 +11,7 @@ import java.util.*;
 import symbolTable.*;
 import CompilerError.*;
 import Parser.*;
+import static Parser.TokenType.*;
 
 public class SemanticActions {
 
@@ -127,6 +128,8 @@ public class SemanticActions {
                 semanticStack.push(token);
                 break;
             case 30:
+                String name = token.getValue();
+                
                 break;
             case 31:
                 break;
@@ -177,9 +180,21 @@ public class SemanticActions {
         quadruple.addQuad(quad);
     }
 
-    private void gen(String tviCode, String operand1) {
-        String[] quad = {tviCode, operand1, null, null};
+    private void gen(String tviCode, String op) {
+        String[] quad = {tviCode, op, null, null};
         quadruple.addQuad(quad);
+    }
+    
+    public int typecheck(Token id1, Token id2) {
+        if(id1.getType().equals(INTEGER) && id2.getType().equals(INTEGER)) {
+            return 0;
+        } else if (id1.getType().equals(REAL) && id2.getType().equals(REAL)) {
+            return 1;
+        } else if (id1.getType().equals(REAL) && id2.getType().equals(INTEGER )) {
+            return 2;
+        } else {
+            return 3;
+        }
     }
 
     public void backpatch(int p, int i) {
