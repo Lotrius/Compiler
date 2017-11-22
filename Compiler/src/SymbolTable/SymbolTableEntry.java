@@ -5,6 +5,8 @@
  */
 package SymbolTable;
 
+import Parser.TokenType;
+
 /**
  *
  * @author Solomon
@@ -21,6 +23,7 @@ public class SymbolTableEntry {
     boolean cons;
     boolean reserved;
     String name;
+    TokenType type;
 
     public SymbolTableEntry(String name) {
         this.name = name;
@@ -33,6 +36,7 @@ public class SymbolTableEntry {
         this.array = false;
         this.cons = false;
         this.reserved = false;
+        this.type = type;
     }
     
     public String getName() {
@@ -109,6 +113,10 @@ public class SymbolTableEntry {
 
     public void setIsReserved(boolean r) {
         this.reserved = r;
+    }
+    
+    public TokenType getType() {
+        return this.type;
     }
 
 }
