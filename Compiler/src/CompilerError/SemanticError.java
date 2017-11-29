@@ -33,7 +33,4 @@ public class SemanticError extends CompilerError {
         return new SemanticError("Error: Mod error with " + value1 + " and " + value2);
     }
     
-    public static SemanticError undeclaredError(String value) {
-        return new SemanticError("Error: Undeclared variable " + value);
-    }
 }

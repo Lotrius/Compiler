@@ -129,7 +129,6 @@ public class SemanticActions {
 
                 insert = false;
                 break;
-
             case 13:
                 semanticStack.push(token);
                 break;
