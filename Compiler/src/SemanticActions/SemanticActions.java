@@ -8,7 +8,7 @@ package SemanticActions;
 import Lexer.Token;
 import java.lang.*;
 import java.util.*;
-import symbolTable.*;
+import SymbolTable.*;
 import CompilerError.*;
 import Parser.*;
 import static Parser.TokenType.*;
@@ -47,10 +47,10 @@ public class SemanticActions {
         globalTable = new SymbolTable(tableSize);
         localTable = new SymbolTable(tableSize);
         constantTable = new SymbolTable(tableSize);
-        installBuiltins(globalTable);
+        globalTable.installBuiltins();
     }
 
-    public void execute(SemanticAction action, Token token) throws SemanticError {
+    public void execute(SemanticAction action, Token token) throws SemanticError, SymbolTableError {
 
         int actionNumber = action.getIndex();
 
@@ -66,22 +66,19 @@ public class SemanticActions {
             case 3:
                 TokenType typ = (TokenType) semanticStack.pop();
                 if (isArray) {
-                    ConstantEntry ub = semanticStack.pop();
-                    ConstantEntry lb = semanticStack.pop();
+                    Token u = (Token) semanticStack.pop();
+                    int ub = Integer.parseInt(u.getValue());
+                    Token l = (Token) semanticStack.pop();
+                    int lb = Integer.parseInt(l.getValue());
                     int msize = (ub - lb) + 1;
                     while (!semanticStack.isEmpty()) {
                         Token id = (Token) semanticStack.pop();
                         if (global) {
                             ArrayEntry entry = new ArrayEntry(id.getValue(), globalMemory, typ, ub, lb);
-                            entry.setType(typ);
-                            entry.upperBound = ub;
-                            entry.lowerBound = lb;
-                            entry.address = globalMemory;
                             globalTable.insert(entry);
                             globalMemory += msize;
                         } else {
                             ArrayEntry entry = new ArrayEntry(id.getValue(), localMemory, typ, ub, lb);
-                            entry.address = localMemory;
                             localMemory += msize;
                         }
                     }
@@ -90,13 +87,10 @@ public class SemanticActions {
                         Token id = (Token) semanticStack.pop();
                         if (global) {
                             VariableEntry entry = new VariableEntry(id.getValue(), globalMemory, typ);
-                            entry.setType(typ);
-                            entry.address = globalMemory;
                             globalTable.insert(entry);
                             globalMemory += 1;
                         } else {
                             VariableEntry entry = new VariableEntry(id.getValue(), localMemory, typ);
-                            entry.address = localMemory;
                             localMemory += 1;
                         }
                     }
@@ -148,14 +142,14 @@ public class SemanticActions {
                 semanticStack.push(id);
                 break;
             case 31:
-                SymbolTableEntry idsec = semanticStack.pop();
-                SymbolTableEntry offset = semanticStack.pop();
-                SymbolTableEntry idfir = semanticStack.pop();
+                SymbolTableEntry idsec = (SymbolTableEntry) semanticStack.pop();
+                SymbolTableEntry offset = (SymbolTableEntry) semanticStack.pop();
+                SymbolTableEntry idfir = (SymbolTableEntry) semanticStack.pop();
 
-                if (typcheck(idfir, idsec) == 3) {
-                    throw SemanticError.mismatch(idfir, idsec);
+                if (typecheck(idfir, idsec) == 3) {
+                    throw SemanticError.mismatch(idfir.getName(), idsec.getName());
                 }
-                if (typcheck(idfir, idsec) == 2) {
+                if (typecheck(idfir, idsec) == 2) {
                     SymbolTableEntry $$TEMP = create("TEMP", TokenType.REAL);
                     gen("ltof", idsec, $$TEMP);
                     if (offset == null) {
@@ -176,33 +170,33 @@ public class SemanticActions {
                 semanticStack.push(token);
                 break;
             case 43:
-                SymbolTableEntry idsec = semanticStack.pop();
-                SymbolTableEntry idfir = semanticStack.pop();
-                if (typecheck(idfir, idsec) == 0) {
+                SymbolTableEntry idsecc = (SymbolTableEntry) semanticStack.pop();
+                SymbolTableEntry idfirr = (SymbolTableEntry) semanticStack.pop();
+                if (typecheck(idfirr, idsecc) == 0) {
                     SymbolTableEntry $$TEMP = create("TEMP", TokenType.INTEGER);
-                    gen(token.getType(), idfir, idsec, $$TEMP);
+                    gen(token.getType().toString(), idfirr, idsecc, $$TEMP);
                     semanticStack.push($$TEMP);
                 }
 
-                if (typecheck(idfir, idsec) == 1) {
+                if (typecheck(idfirr, idsecc) == 1) {
                     SymbolTableEntry $$TEMP = create("TEMP", TokenType.REAL);
-                    gen("f" + token.getType(), idfir, idsec, $$TEMP);
+                    gen("f" + token.getType(), idfirr, idsecc, $$TEMP);
                     semanticStack.push($$TEMP);
                 }
 
-                if (typecheck(idfir, idsec) == 2) {
+                if (typecheck(idfirr, idsecc) == 2) {
                     SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.REAL);
-                    gen("ltof", idsec, $$TEMP1);
+                    gen("ltof", idsecc, $$TEMP1);
                     SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.REAL);
-                    gen("f" + token.getType(), idfir, $$TEMP1, $$TEMP2);
+                    gen("f" + token.getType(), idfirr, $$TEMP1, $$TEMP2);
                     semanticStack.push($$TEMP2);
                 }
 
-                if (typecheck(idfir, idsec) == 3) {
+                if (typecheck(idfirr, idsecc) == 3) {
                     SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.REAL);
-                    gen("ltof", idfir, $$TEMP1);
+                    gen("ltof", idfirr, $$TEMP1);
                     SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.REAL);
-                    gen("f" + token.getType(), $$TEMP1, idsec, $$TEMP2);
+                    gen("f" + token.getType(), $$TEMP1, idsecc, $$TEMP2);
                     semanticStack.push($$TEMP2);
                 }
                 break;
@@ -214,82 +208,82 @@ public class SemanticActions {
                 if (et != etype.ARITHMETIC) {
                     throw SemanticError.eTypeMismatch(et);
                 }
-                SymbolTableEntry idsec = semanticStack.pop();
+                SymbolTableEntry idseccc = (SymbolTableEntry) semanticStack.pop();
                 Token op = (Token) semanticStack.pop();
-                SymbolTableEntry idfir = semanticStack.pop();
+                SymbolTableEntry idfirrr = (SymbolTableEntry) semanticStack.pop();
 
-                if ((typecheck(idfir, idsec) != 0) && (op.getType().equals("mod"))) {
-                    throw SemanticError.modError(idfir.getType(), idsec.getType());
+                if ((typecheck(idfirrr, idseccc) != 0) && (op.getType().equals("mod"))) {
+                    throw SemanticError.modError(idfirrr.getType().toString(), idseccc.getType().toString());
                 }
 
-                if ((typecheck(idfir, idsec)) == 0) {
+                if ((typecheck(idfirrr, idseccc)) == 0) {
                     if (op.getType().equals("mod")) {
                         SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.INTEGER);
-                        gen("mov", idfir, $$TEMP1);
+                        gen("mov", idfirrr, $$TEMP1);
                         SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.INTEGER);
                         gen("move", $$TEMP1, $$TEMP2);
-                        gen("sub", $$TEMP2, idsec, $$TEMP1);
-                        gen("bge", $$TEMP1, idsec, quadruple.getNextQuad() - 2);
+                        gen("sub", $$TEMP2, idseccc, $$TEMP1);
+                        gen("bge", $$TEMP1, idseccc, quadruple.getNextQuad() - 2);
                         semanticStack.push($$TEMP2);
                     } else if (op.getType().equals("/")) {
                         SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.REAL);
-                        gen("ltof", idfir, $$TEMP1);
+                        gen("ltof", idfirrr, $$TEMP1);
                         SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.REAL);
-                        gen("ltof", idsec, $$TEMP2);
+                        gen("ltof", idseccc, $$TEMP2);
                         SymbolTableEntry $$TEMP3 = create("TEMP3", TokenType.REAL);
                         gen("fdiv", $$TEMP1, $$TEMP2, $$TEMP3);
                         semanticStack.push($$TEMP2);
                     } else {
                         SymbolTableEntry $$TEMP = create("TEMP1", TokenType.INTEGER);
-                        gen(token.getType(), idfir, idsec, $$TEMP);
+                        gen(token.getType().toString(), idfirrr, idseccc, $$TEMP);
                         semanticStack.push($$TEMP);
                     }
                 }
 
-                if ((typecheck(idfir, idsec)) == 1) {
+                if ((typecheck(idfirrr, idseccc)) == 1) {
                     if (op.getType().equals("div")) {
                         SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.INTEGER);
-                        gen("ftol", idfir, $$TEMP1);
+                        gen("ftol", idfirrr, $$TEMP1);
                         SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.INTEGER);
-                        gen("ftol", idsec, $$TEMP2);
+                        gen("ftol", idseccc, $$TEMP2);
                         SymbolTableEntry $$TEMP3 = create("TEMP3", TokenType.INTEGER);
                         gen("div", $$TEMP1, $$TEMP2, $$TEMP3);
                         semanticStack.push($$TEMP2);
                     } else {
                         SymbolTableEntry $$TEMP = create("TEMP", TokenType.REAL);
-                        gen("f" + token.getType(), idfir, idsec, $$TEMP);
+                        gen("f" + token.getType(), idfirrr, idseccc, $$TEMP);
                         semanticStack.push($$TEMP);
                     }
                 }
 
-                if ((typecheck(idfir, idsec)) == 2) {
+                if ((typecheck(idfirrr, idseccc)) == 2) {
                     if (op.getType().equals("div")) {
                         SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.INTEGER);
-                        gen("ftol", idfir, $$TEMP1);
+                        gen("ftol", idfirrr, $$TEMP1);
                         SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.INTEGER);
-                        gen("div", $$TEMP1, idsec, $$TEMP2);
+                        gen("div", $$TEMP1, idseccc, $$TEMP2);
                         semanticStack.push($$TEMP2);
                     } else {
                         SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.REAL);
-                        gen("ltof" + token.getType(), idsec, $$TEMP1);
+                        gen("ltof" + token.getType(), idseccc, $$TEMP1);
                         SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.REAL);
-                        gen("f" + token.getType(), idfir, $$TEMP1, $$TEMP2);
+                        gen("f" + token.getType(), idfirrr, $$TEMP1, $$TEMP2);
                         semanticStack.push($$TEMP2);
                     }
                 }
 
-                if ((typecheck(idfir, idsec)) == 3) {
+                if ((typecheck(idfirrr, idseccc)) == 3) {
                     if (op.getType().equals("div")) {
                         SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.INTEGER);
-                        gen("ftol", idsec, $$TEMP1);
+                        gen("ftol", idseccc, $$TEMP1);
                         SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.INTEGER);
-                        gen("div", idfir, $$TEMP1, $$TEMP2);
+                        gen("div", idfirrr, $$TEMP1, $$TEMP2);
                         semanticStack.push($$TEMP2);
                     } else {
                         SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.REAL);
-                        gen("ltof" + token.getType(), idfir, $$TEMP1);
+                        gen("ltof" + token.getType(), idfirrr, $$TEMP1);
                         SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.REAL);
-                        gen("f" + token.getType(), $$TEMP1, idsec, $$TEMP2);
+                        gen("f" + token.getType(), $$TEMP1, idseccc, $$TEMP2);
                         semanticStack.push($$TEMP2);
                     }
                 }
@@ -324,12 +318,12 @@ public class SemanticActions {
                 }
                 break;
             case 48:
-                SymbolTableEntry offset = semanticStack.pop();
-                SymbolTableEntry id = semanticStack.pop();
-                SymbolTableEntry eType = semanticStack.pop();
-                if (offset == null) {
-                    SymbolTableEntry $$TEMP = create("TEMP", id.getType());
-                    gen("load", id, offset, $$TEMP);
+                SymbolTableEntry offset2 = (SymbolTableEntry) semanticStack.pop();
+                SymbolTableEntry id4 = (SymbolTableEntry) semanticStack.pop();
+                SymbolTableEntry eType = (SymbolTableEntry) semanticStack.pop();
+                if (offset2 == null) {
+                    SymbolTableEntry $$TEMP = create("TEMP", id4.getType());
+                    gen("load", id4, offset2, $$TEMP);
                     semanticStack.push($$TEMP);
                 }
                 break;
@@ -347,7 +341,7 @@ public class SemanticActions {
         }
     }
 
-    public VariableEntry create(String name, TokenType type) {
+    public VariableEntry create(String name, TokenType type) throws SymbolTableError {
         VariableEntry $$NAME = new VariableEntry(name, -globalMemory, type);
         globalTable.insert($$NAME);
         globalMemory++;
@@ -374,6 +368,12 @@ public class SemanticActions {
         String[] quad = {tviCode, op1, op2, null};
         quadruple.addQuad(quad);
     }
+    
+    //45
+    private void gen(String tviCode, SymbolTableEntry op1, int in) {
+        String[] quad = {tviCode, op1, in, null};
+        quadruple.addQuad(quad);
+    }
 
     private void gen(String tviCode, SymbolTableEntry op1, SymbolTableEntry op2, SymbolTableEntry op3) {
         String[] quad = {tviCode, op1, op2, op3};
@@ -381,6 +381,18 @@ public class SemanticActions {
     }
 
     public int typecheck(Token id1, Token id2) {
+        if (id1.getType().equals(INTEGER) && id2.getType().equals(INTEGER)) {
+            return 0;
+        } else if (id1.getType().equals(REAL) && id2.getType().equals(REAL)) {
+            return 1;
+        } else if (id1.getType().equals(REAL) && id2.getType().equals(INTEGER)) {
+            return 2;
+        } else {
+            return 3;
+        }
+    }
+    
+        public int typecheck(SymbolTableEntry id1, SymbolTableEntry id2) {
         if (id1.getType().equals(INTEGER) && id2.getType().equals(INTEGER)) {
             return 0;
         } else if (id1.getType().equals(REAL) && id2.getType().equals(REAL)) {
