@@ -364,19 +364,22 @@ public class SemanticActions {
     }
 
     //31
+    //FIXXOIEJFOIWEFJOIEF
     private void gen(String tviCode, SymbolTableEntry op1, SymbolTableEntry op2) {
-        String[] quad = {tviCode, op1, op2, null};
+        String[] quad = {tviCode, op1.getName(), op2.getName(), null};
         quadruple.addQuad(quad);
     }
     
     //45
-    private void gen(String tviCode, SymbolTableEntry op1, int in) {
-        String[] quad = {tviCode, op1, in, null};
+    //FIXEOWIFJWEOIFJWE
+    private void gen(String tviCode, SymbolTableEntry op1, SymbolTableEntry op2, int in) {
+        String[] quad = {tviCode, op1.getName(), op2.getName(), Integer.toString(in)};
         quadruple.addQuad(quad);
     }
 
+    //FJWEOIFJWOEIFJWEIOFJWOEIFJWOEIFJWEOIFJOWJ
     private void gen(String tviCode, SymbolTableEntry op1, SymbolTableEntry op2, SymbolTableEntry op3) {
-        String[] quad = {tviCode, op1, op2, op3};
+        String[] quad = {tviCode, op1.getName(), op2.getName(), op3.getName()};
         quadruple.addQuad(quad);
     }
 

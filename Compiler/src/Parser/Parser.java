@@ -7,6 +7,7 @@ package Parser;
 
 import CompilerError.LexicalError;
 import CompilerError.SemanticError;
+import CompilerError.SymbolTableError;
 import Lexer.Token;
 import Lexer.Tokenizer;
 import SemanticActions.*;
@@ -55,12 +56,12 @@ public class Parser {
     public RHSTable rhsTable = new RHSTable();
     BufferedWriter bw;
 
-    public static void main(String[] args) throws IOException, LexicalError, SemanticError {
+    public static void main(String[] args) throws IOException, LexicalError, SemanticError, SymbolTableError {
         String s = args[0];
         Parser parser = new Parser(s);
     }
 
-    public Parser(String s) throws IOException, LexicalError, SemanticError {
+    public Parser(String s) throws IOException, LexicalError, SemanticError, SymbolTableError {
         tokenizer = new Tokenizer(s);
         semacs = new SemanticActions();
 
@@ -72,7 +73,7 @@ public class Parser {
         bw.close();
     }
 
-    public void parse() throws IOException, LexicalError, SemanticError {
+    public void parse() throws IOException, LexicalError, SemanticError, SymbolTableError {
         Token currentToken = tokenizer.getNextToken();
         stack.clear();
         stack.push(TokenType.ENDOFFILE);
