@@ -33,4 +33,9 @@ public class SemanticError extends CompilerError {
         return new SemanticError("Error: Mod error with " + value1 + " and " + value2);
     }
     
+    public static SemanticError arrayError() {
+        return new SemanticError("Error: Not an array");
+    }
+    
+    
 }

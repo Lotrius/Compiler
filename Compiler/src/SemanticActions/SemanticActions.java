@@ -16,8 +16,6 @@ import static Parser.TokenType.*;
 public class SemanticActions {
 
     private Stack<Object> semanticStack;
-//	Quadruples not used until Phase 2
-//	private Quadruples quads ;
     private boolean insert;
     private boolean isArray;
     private boolean global;
@@ -30,6 +28,8 @@ public class SemanticActions {
     private int tableSize = 100;
     private Quadruple quadruple;
     private int GLOBAL_STORE = 0;
+    private SymbolTableEntry currentFunction = null;
+    private Stack<Integer> paramCount;
 
     public enum etype {
         ARITHMETIC, RELATIONAL
@@ -37,7 +37,6 @@ public class SemanticActions {
 
     public SemanticActions() {
         semanticStack = new Stack<Object>();
-//		quads = new Quadruples();
         insert = true;
         isArray = false;
         isParam = false;
@@ -48,13 +47,18 @@ public class SemanticActions {
         localTable = new SymbolTable(tableSize);
         constantTable = new SymbolTable(tableSize);
         globalTable.installBuiltins();
+        paramCount = new Stack<Integer>();
     }
 
     public void execute(SemanticAction action, Token token) throws SemanticError, SymbolTableError {
 
         int actionNumber = action.getIndex();
+        List Etrue;
+        List Efalse;
+        List skipElse;
+        int beginLoop;
+        etype et;
 
-//		System.out.println("calling action : " + actionNumber + " with token " + token.getType());
         switch (actionNumber) {
 
             case 1:
@@ -163,6 +167,27 @@ public class SemanticActions {
                     gen("store", idsec, offset, idfir);
                 }
                 break;
+            case 32:
+                et = (etype) semanticStack.pop();
+                if (et != etype.ARITHMETIC) {
+                    throw SemanticError.eTypeMismatch(et);
+                }
+                if (!(((SymbolTableEntry) semanticStack.peek()).isArray())) {
+                    throw SemanticError.arrayError();
+                }
+                break;
+            case 33:
+                et = (etype) semanticStack.pop();
+                if (et != etype.ARITHMETIC) {
+                    throw SemanticError.eTypeMismatch(et);
+                }
+                SymbolTableEntry id33 = (SymbolTableEntry) semanticStack.pop();
+                if(id33.getType != TokenType.INTEGER) {
+                    
+                }
+                break;
+            case 34:
+                break;
             case 40:
                 semanticStack.push(token);
                 break;
@@ -204,7 +229,7 @@ public class SemanticActions {
                 semanticStack.push(token);
                 break;
             case 45:
-                etype et = (etype) semanticStack.pop();
+                et = (etype) semanticStack.pop();
                 if (et != etype.ARITHMETIC) {
                     throw SemanticError.eTypeMismatch(et);
                 }
@@ -369,7 +394,7 @@ public class SemanticActions {
         String[] quad = {tviCode, op1.getName(), op2.getName(), null};
         quadruple.addQuad(quad);
     }
-    
+
     //45
     //FIXEOWIFJWEOIFJWE
     private void gen(String tviCode, SymbolTableEntry op1, SymbolTableEntry op2, int in) {
@@ -394,8 +419,8 @@ public class SemanticActions {
             return 3;
         }
     }
-    
-        public int typecheck(SymbolTableEntry id1, SymbolTableEntry id2) {
+
+    public int typecheck(SymbolTableEntry id1, SymbolTableEntry id2) {
         if (id1.getType().equals(INTEGER) && id2.getType().equals(INTEGER)) {
             return 0;
         } else if (id1.getType().equals(REAL) && id2.getType().equals(REAL)) {
