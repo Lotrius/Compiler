@@ -37,5 +37,7 @@ public class SemanticError extends CompilerError {
         return new SemanticError("Error: Not an array");
     }
     
-    
+    public static SemanticError arrayBoundError() {
+        return new SemanticError("Error: Bad array bounds");
+    }
 }

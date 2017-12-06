@@ -153,7 +153,7 @@ public class Parser {
                 }
             } else if(predicted.isAction()) {
                 SemanticAction action = (SemanticAction) predicted;
-                //semacs.execute(action,currentToken);
+                semacs.execute(action.getIndex(),currentToken);
             }
         }
         if (stack.empty()) {

@@ -6,7 +6,6 @@
 package SemanticActions;
 
 import Lexer.Token;
-import java.lang.*;
 import java.util.*;
 import SymbolTable.*;
 import CompilerError.*;
@@ -50,16 +49,15 @@ public class SemanticActions {
         paramCount = new Stack<Integer>();
     }
 
-    public void execute(SemanticAction action, Token token) throws SemanticError, SymbolTableError {
-
-        int actionNumber = action.getIndex();
+    public void execute(int action, Token token) throws SemanticError, SymbolTableError {
         List Etrue;
         List Efalse;
         List skipElse;
         int beginLoop;
         etype et;
+        SymbolTableEntry $$TEMP;
 
-        switch (actionNumber) {
+        switch (action) {
 
             case 1:
                 insert = true;
@@ -130,6 +128,64 @@ public class SemanticActions {
             case 13:
                 semanticStack.push(token);
                 break;
+            case 22:
+                et = (etype) semanticStack.pop();
+                if (et != etype.RELATIONAL) {
+                    throw SemanticError.eTypeMismatch(et);
+                }
+
+                Efalse = (LinkedList) semanticStack.pop();
+                Etrue = (LinkedList) semanticStack.peek();
+
+                backpatch(Etrue, quadruple.getNextQuad());
+
+                semanticStack.push(Efalse);
+                break;
+            case 24:
+                beginLoop = quadruple.getNextQuad();
+                semanticStack.push(beginLoop);
+                break;
+            case 25:
+                et = (etype) semanticStack.pop();
+                if (et != etype.RELATIONAL) {
+                    throw SemanticError.eTypeMismatch(et);
+                }
+
+                Efalse = (LinkedList) semanticStack.pop();
+                Etrue = (LinkedList) semanticStack.peek();
+
+                backpatch(Etrue, quadruple.getNextQuad());
+
+                semanticStack.push(Efalse);
+                break;
+            case 26:
+                Efalse = (LinkedList) semanticStack.pop();
+                Etrue = (LinkedList) semanticStack.pop();
+                beginLoop = (int) semanticStack.pop();
+                gen("goto", Integer.toString(beginLoop));
+                backpatch(Efalse, quadruple.getNextQuad());
+                break;
+            case 27:
+                skipElse = makeList(quadruple.getNextQuad());
+                semanticStack.push(skipElse);
+                gen("goto", "_");
+                
+                Efalse = (LinkedList) semanticStack.peek();
+                backpatch(Efalse, quadruple.getNextQuad());
+                break;
+            case 28:
+                skipElse = (LinkedList) semanticStack.pop();
+                Efalse = (LinkedList) semanticStack.pop();
+                Etrue = (LinkedList) semanticStack.pop();
+                
+                backpatch(skipElse, quadruple.getNextQuad());
+                break;
+            case 29:
+                Efalse = (LinkedList) semanticStack.pop();
+                Etrue = (LinkedList) semanticStack.pop();
+                
+                backpatch(Efalse, quadruple.getNextQuad());
+                break;
             case 30:
                 String name = token.getValue();
                 SymbolTableEntry id;
@@ -154,7 +210,7 @@ public class SemanticActions {
                     throw SemanticError.mismatch(idfir.getName(), idsec.getName());
                 }
                 if (typecheck(idfir, idsec) == 2) {
-                    SymbolTableEntry $$TEMP = create("TEMP", TokenType.REAL);
+                    $$TEMP = create("TEMP", TokenType.REAL);
                     gen("ltof", idsec, $$TEMP);
                     if (offset == null) {
                         gen("move", idsec, idfir);
@@ -182,135 +238,234 @@ public class SemanticActions {
                     throw SemanticError.eTypeMismatch(et);
                 }
                 SymbolTableEntry id33 = (SymbolTableEntry) semanticStack.pop();
-                if(id33.getType != TokenType.INTEGER) {
-                    
+                if (id33.getType() != TokenType.INTEGER) {
+                    throw SemanticError.arrayBoundError();
                 }
+                $$TEMP = create("TEMP", TokenType.INTEGER);
+                ArrayEntry ae = (ArrayEntry) semanticStack.get(0);
+                gen("sub", id33, ae.getLowerBound(), $$TEMP);
                 break;
             case 34:
+                et = (etype) semanticStack.pop();
+                if (((SymbolTableEntry) semanticStack.peek()).isFunction()) {
+                    execute(52, token);
+                } else {
+                    semanticStack.push(null);
+                }
+                break;
+            case 38:
+                et = (etype) semanticStack.pop();
+                if (et != etype.ARITHMETIC) {
+                    throw SemanticError.eTypeMismatch(et);
+                }
+                semanticStack.push(token);
+                break;
+            case 39:
+                et = (etype) semanticStack.pop();
+                if (et != etype.ARITHMETIC) {
+                    throw SemanticError.eTypeMismatch(et);
+                }
+
+                SymbolTableEntry id39 = (SymbolTableEntry) semanticStack.pop();
+                Token operator = (Token) semanticStack.pop();
+                SymbolTableEntry id392 = (SymbolTableEntry) semanticStack.pop();
+
+                if (typecheck(id39, id392) == 2) {
+                    $$TEMP = create("TEMP1", TokenType.REAL);
+                    gen("ltof", id392, $$TEMP);
+                    gen(token.getType().toString(), id39, $$TEMP, "_");
+                } else if (typecheck(id39, id392) == 3) {
+                    $$TEMP = create("TEMP1", TokenType.REAL);
+                    gen("ltof", id39, $$TEMP);
+                    gen(token.getType().toString(), $$TEMP, id392, "_");
+                } else {
+                    gen(token.getType().toString(), id39, id392, "_");
+                }
+                gen("goto", "_");
+                Etrue = makeList(quadruple.getNextQuad() - 2);
+                Efalse = makeList(quadruple.getNextQuad() - 1);
+                semanticStack.push(Etrue);
+                semanticStack.push(Efalse);
+                semanticStack.push(etype.RELATIONAL);
                 break;
             case 40:
                 semanticStack.push(token);
                 break;
             case 42:
+                et = (etype) semanticStack.pop();
+                if (token.getOpType() == Token.OperatorType.OR) {
+                    if (et != etype.RELATIONAL) {
+                        throw SemanticError.eTypeMismatch(et);
+                    }
+                    Efalse = (LinkedList) semanticStack.peek();
+                    backpatch(Efalse, quadruple.getNextQuad());
+                } else if (et == etype.ARITHMETIC) {
+
+                }
                 semanticStack.push(token);
                 break;
             case 43:
-                SymbolTableEntry idsecc = (SymbolTableEntry) semanticStack.pop();
-                SymbolTableEntry idfirr = (SymbolTableEntry) semanticStack.pop();
-                if (typecheck(idfirr, idsecc) == 0) {
-                    SymbolTableEntry $$TEMP = create("TEMP", TokenType.INTEGER);
-                    gen(token.getType().toString(), idfirr, idsecc, $$TEMP);
-                    semanticStack.push($$TEMP);
-                }
+                et = (etype) semanticStack.pop();
+                if (et == etype.RELATIONAL) {
+                    if (token.getOpType() == Token.OperatorType.OR) {
+                        List Efalse2 = (LinkedList) semanticStack.pop();
+                        List Etrue2 = (LinkedList) semanticStack.pop();
+                        Token id43 = (Token) semanticStack.pop();
+                        List Efalse1 = (LinkedList) semanticStack.pop();
+                        List Etrue1 = (LinkedList) semanticStack.pop();
 
-                if (typecheck(idfirr, idsecc) == 1) {
-                    SymbolTableEntry $$TEMP = create("TEMP", TokenType.REAL);
-                    gen("f" + token.getType(), idfirr, idsecc, $$TEMP);
-                    semanticStack.push($$TEMP);
-                }
+                        Etrue = merge(Etrue1, Etrue2);
+                        Efalse = Efalse2;
 
-                if (typecheck(idfirr, idsecc) == 2) {
-                    SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.REAL);
-                    gen("ltof", idsecc, $$TEMP1);
-                    SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.REAL);
-                    gen("f" + token.getType(), idfirr, $$TEMP1, $$TEMP2);
-                    semanticStack.push($$TEMP2);
-                }
+                        semanticStack.push(Etrue);
+                        semanticStack.push(Efalse);
+                        semanticStack.push(etype.RELATIONAL);
+                    }
+                } else {
+                    SymbolTableEntry idsecc = (SymbolTableEntry) semanticStack.pop();
+                    SymbolTableEntry idfirr = (SymbolTableEntry) semanticStack.pop();
+                    if (typecheck(idfirr, idsecc) == 0) {
+                        $$TEMP = create("TEMP", TokenType.INTEGER);
+                        gen(token.getType().toString(), idfirr, idsecc, $$TEMP);
+                        semanticStack.push($$TEMP);
+                    }
 
-                if (typecheck(idfirr, idsecc) == 3) {
-                    SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.REAL);
-                    gen("ltof", idfirr, $$TEMP1);
-                    SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.REAL);
-                    gen("f" + token.getType(), $$TEMP1, idsecc, $$TEMP2);
-                    semanticStack.push($$TEMP2);
+                    if (typecheck(idfirr, idsecc) == 1) {
+                        $$TEMP = create("TEMP", TokenType.REAL);
+                        gen("f" + token.getType(), idfirr, idsecc, $$TEMP);
+                        semanticStack.push($$TEMP);
+                    }
+
+                    if (typecheck(idfirr, idsecc) == 2) {
+                        SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.REAL);
+                        gen("ltof", idsecc, $$TEMP1);
+                        SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.REAL);
+                        gen("f" + token.getType(), idfirr, $$TEMP1, $$TEMP2);
+                        semanticStack.push($$TEMP2);
+                    }
+
+                    if (typecheck(idfirr, idsecc) == 3) {
+                        SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.REAL);
+                        gen("ltof", idfirr, $$TEMP1);
+                        SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.REAL);
+                        gen("f" + token.getType(), $$TEMP1, idsecc, $$TEMP2);
+                        semanticStack.push($$TEMP2);
+                    }
+                    semanticStack.push(etype.ARITHMETIC);
                 }
                 break;
             case 44:
+                et = (etype) semanticStack.pop();
+                if (et == etype.RELATIONAL) {
+                    if (token.getOpType() == Token.OperatorType.AND) {
+                        Etrue = (LinkedList) semanticStack.peek();
+                        backpatch(Etrue, quadruple.getNextQuad());
+                    }
+                }
                 semanticStack.push(token);
                 break;
             case 45:
                 et = (etype) semanticStack.pop();
-                if (et != etype.ARITHMETIC) {
-                    throw SemanticError.eTypeMismatch(et);
-                }
-                SymbolTableEntry idseccc = (SymbolTableEntry) semanticStack.pop();
-                Token op = (Token) semanticStack.pop();
-                SymbolTableEntry idfirrr = (SymbolTableEntry) semanticStack.pop();
-
-                if ((typecheck(idfirrr, idseccc) != 0) && (op.getType().equals("mod"))) {
-                    throw SemanticError.modError(idfirrr.getType().toString(), idseccc.getType().toString());
-                }
-
-                if ((typecheck(idfirrr, idseccc)) == 0) {
-                    if (op.getType().equals("mod")) {
-                        SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.INTEGER);
-                        gen("mov", idfirrr, $$TEMP1);
-                        SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.INTEGER);
-                        gen("move", $$TEMP1, $$TEMP2);
-                        gen("sub", $$TEMP2, idseccc, $$TEMP1);
-                        gen("bge", $$TEMP1, idseccc, quadruple.getNextQuad() - 2);
-                        semanticStack.push($$TEMP2);
-                    } else if (op.getType().equals("/")) {
-                        SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.REAL);
-                        gen("ltof", idfirrr, $$TEMP1);
-                        SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.REAL);
-                        gen("ltof", idseccc, $$TEMP2);
-                        SymbolTableEntry $$TEMP3 = create("TEMP3", TokenType.REAL);
-                        gen("fdiv", $$TEMP1, $$TEMP2, $$TEMP3);
-                        semanticStack.push($$TEMP2);
-                    } else {
-                        SymbolTableEntry $$TEMP = create("TEMP1", TokenType.INTEGER);
-                        gen(token.getType().toString(), idfirrr, idseccc, $$TEMP);
-                        semanticStack.push($$TEMP);
+                if (token.getOpType() == Token.OperatorType.AND) {
+                    if (et != etype.RELATIONAL) {
+                        throw SemanticError.eTypeMismatch(et);
                     }
-                }
+                    List Efalse2 = (LinkedList) semanticStack.pop();
+                    List Etrue2 = (LinkedList) semanticStack.pop();
+                    Token id43 = (Token) semanticStack.pop();
+                    List Efalse1 = (LinkedList) semanticStack.pop();
+                    List Etrue1 = (LinkedList) semanticStack.pop();
 
-                if ((typecheck(idfirrr, idseccc)) == 1) {
-                    if (op.getType().equals("div")) {
-                        SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.INTEGER);
-                        gen("ftol", idfirrr, $$TEMP1);
-                        SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.INTEGER);
-                        gen("ftol", idseccc, $$TEMP2);
-                        SymbolTableEntry $$TEMP3 = create("TEMP3", TokenType.INTEGER);
-                        gen("div", $$TEMP1, $$TEMP2, $$TEMP3);
-                        semanticStack.push($$TEMP2);
-                    } else {
-                        SymbolTableEntry $$TEMP = create("TEMP", TokenType.REAL);
-                        gen("f" + token.getType(), idfirrr, idseccc, $$TEMP);
-                        semanticStack.push($$TEMP);
-                    }
-                }
+                    Efalse = merge(Efalse1, Efalse2);
+                    Etrue = Etrue2;
 
-                if ((typecheck(idfirrr, idseccc)) == 2) {
-                    if (op.getType().equals("div")) {
-                        SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.INTEGER);
-                        gen("ftol", idfirrr, $$TEMP1);
-                        SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.INTEGER);
-                        gen("div", $$TEMP1, idseccc, $$TEMP2);
-                        semanticStack.push($$TEMP2);
-                    } else {
-                        SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.REAL);
-                        gen("ltof" + token.getType(), idseccc, $$TEMP1);
-                        SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.REAL);
-                        gen("f" + token.getType(), idfirrr, $$TEMP1, $$TEMP2);
-                        semanticStack.push($$TEMP2);
+                    semanticStack.push(Etrue);
+                    semanticStack.push(Efalse);
+                    semanticStack.push(etype.RELATIONAL);
+                } else {
+                    if (et != etype.ARITHMETIC) {
+                        throw SemanticError.eTypeMismatch(et);
                     }
-                }
+                    SymbolTableEntry idseccc = (SymbolTableEntry) semanticStack.pop();
+                    Token op = (Token) semanticStack.pop();
+                    SymbolTableEntry idfirrr = (SymbolTableEntry) semanticStack.pop();
 
-                if ((typecheck(idfirrr, idseccc)) == 3) {
-                    if (op.getType().equals("div")) {
-                        SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.INTEGER);
-                        gen("ftol", idseccc, $$TEMP1);
-                        SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.INTEGER);
-                        gen("div", idfirrr, $$TEMP1, $$TEMP2);
-                        semanticStack.push($$TEMP2);
-                    } else {
-                        SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.REAL);
-                        gen("ltof" + token.getType(), idfirrr, $$TEMP1);
-                        SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.REAL);
-                        gen("f" + token.getType(), $$TEMP1, idseccc, $$TEMP2);
-                        semanticStack.push($$TEMP2);
+                    if ((typecheck(idfirrr, idseccc) != 0) && (op.getType().equals("mod"))) {
+                        throw SemanticError.modError(idfirrr.getType().toString(), idseccc.getType().toString());
                     }
+
+                    if ((typecheck(idfirrr, idseccc)) == 0) {
+                        if (op.getType().equals("mod")) {
+                            SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.INTEGER);
+                            gen("mov", idfirrr, $$TEMP1);
+                            SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.INTEGER);
+                            gen("move", $$TEMP1, $$TEMP2);
+                            gen("sub", $$TEMP2, idseccc, $$TEMP1);
+                            gen("bge", $$TEMP1, idseccc, quadruple.getNextQuad() - 2);
+                            semanticStack.push($$TEMP2);
+                        } else if (op.getType().equals("/")) {
+                            SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.REAL);
+                            gen("ltof", idfirrr, $$TEMP1);
+                            SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.REAL);
+                            gen("ltof", idseccc, $$TEMP2);
+                            SymbolTableEntry $$TEMP3 = create("TEMP3", TokenType.REAL);
+                            gen("fdiv", $$TEMP1, $$TEMP2, $$TEMP3);
+                            semanticStack.push($$TEMP2);
+                        } else {
+                            $$TEMP = create("TEMP1", TokenType.INTEGER);
+                            gen(token.getType().toString(), idfirrr, idseccc, $$TEMP);
+                            semanticStack.push($$TEMP);
+                        }
+                    }
+
+                    if ((typecheck(idfirrr, idseccc)) == 1) {
+                        if (op.getType().equals("div")) {
+                            SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.INTEGER);
+                            gen("ftol", idfirrr, $$TEMP1);
+                            SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.INTEGER);
+                            gen("ftol", idseccc, $$TEMP2);
+                            SymbolTableEntry $$TEMP3 = create("TEMP3", TokenType.INTEGER);
+                            gen("div", $$TEMP1, $$TEMP2, $$TEMP3);
+                            semanticStack.push($$TEMP2);
+                        } else {
+                            $$TEMP = create("TEMP", TokenType.REAL);
+                            gen("f" + token.getType(), idfirrr, idseccc, $$TEMP);
+                            semanticStack.push($$TEMP);
+                        }
+                    }
+
+                    if ((typecheck(idfirrr, idseccc)) == 2) {
+                        if (op.getType().equals("div")) {
+                            SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.INTEGER);
+                            gen("ftol", idfirrr, $$TEMP1);
+                            SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.INTEGER);
+                            gen("div", $$TEMP1, idseccc, $$TEMP2);
+                            semanticStack.push($$TEMP2);
+                        } else {
+                            SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.REAL);
+                            gen("ltof" + token.getType(), idseccc, $$TEMP1);
+                            SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.REAL);
+                            gen("f" + token.getType(), idfirrr, $$TEMP1, $$TEMP2);
+                            semanticStack.push($$TEMP2);
+                        }
+                    }
+
+                    if ((typecheck(idfirrr, idseccc)) == 3) {
+                        if (op.getType().equals("div")) {
+                            SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.INTEGER);
+                            gen("ftol", idseccc, $$TEMP1);
+                            SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.INTEGER);
+                            gen("div", idfirrr, $$TEMP1, $$TEMP2);
+                            semanticStack.push($$TEMP2);
+                        } else {
+                            SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.REAL);
+                            gen("ltof" + token.getType(), idfirrr, $$TEMP1);
+                            SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.REAL);
+                            gen("f" + token.getType(), $$TEMP1, idseccc, $$TEMP2);
+                            semanticStack.push($$TEMP2);
+                        }
+                    }
+                    semanticStack.push(etype.ARITHMETIC);
                 }
                 break;
             case 46:
@@ -342,15 +497,36 @@ public class SemanticActions {
                     }
                 }
                 break;
+
+            case 47:
+                et = (etype) semanticStack.pop();
+                if (et != etype.RELATIONAL) {
+                    throw SemanticError.eTypeMismatch(et);
+                }
+
+                Etrue = (LinkedList) semanticStack.pop();
+                Efalse = (LinkedList) semanticStack.pop();
+
+                semanticStack.push(Etrue);
+                semanticStack.push(Efalse);
+                semanticStack.push(etype.RELATIONAL);
+                break;
+
             case 48:
                 SymbolTableEntry offset2 = (SymbolTableEntry) semanticStack.pop();
-                SymbolTableEntry id4 = (SymbolTableEntry) semanticStack.pop();
-                SymbolTableEntry eType = (SymbolTableEntry) semanticStack.pop();
-                if (offset2 == null) {
-                    SymbolTableEntry $$TEMP = create("TEMP", id4.getType());
-                    gen("load", id4, offset2, $$TEMP);
-                    semanticStack.push($$TEMP);
+                if (offset2 != null) {
+                    SymbolTableEntry id4 = (SymbolTableEntry) semanticStack.pop();
+                    SymbolTableEntry eType = (SymbolTableEntry) semanticStack.pop();
+
+                    if (offset2.isFunction()) {
+                        execute(52, token);
+                    } else {
+                        $$TEMP = create("TEMP", id4.getType());
+                        gen("load", id4, offset2, $$TEMP);
+                        semanticStack.push($$TEMP);
+                    }
                 }
+                semanticStack.push(etype.ARITHMETIC);
                 break;
             case 55:
                 backpatch(GLOBAL_STORE, globalMemory);
@@ -408,6 +584,22 @@ public class SemanticActions {
         quadruple.addQuad(quad);
     }
 
+    //33
+    //FIXOIWJFOIWEJF
+    private void gen(String tviCode, SymbolTableEntry op1, int in,
+            SymbolTableEntry op2) {
+        String[] quad = {tviCode, op1.getName(), Integer.toString(in), op2.getName()};
+        quadruple.addQuad(quad);
+    }
+
+    //39
+    //OIWEJFOIEWJ
+    private void gen(String tviCode, SymbolTableEntry op1, SymbolTableEntry op2,
+            String s) {
+        String[] quad = {tviCode, op1.getName(), op2.getName(), s};
+        quadruple.addQuad(quad);
+    }
+
     public int typecheck(Token id1, Token id2) {
         if (id1.getType().equals(INTEGER) && id2.getType().equals(INTEGER)) {
             return 0;
@@ -436,9 +628,31 @@ public class SemanticActions {
         quadruple.setField(i, 1, Integer.toString(p));
     }
 
+    public void backpatch(List<Integer> p, int i) {
+        for (Integer x : p) {
+            String[] quad = quadruple.getQuad(x);
+            for (int j = 0; j < quad.length; j++) {
+                quadruple.setField(x, j, Integer.toString(i));
+            }
+        }
+    }
+
     public void semanticStackDump() {
         for (Object obj : semanticStack) {
             System.out.println(obj + " ");
         }
+    }
+
+    public List makeList(int i) {
+        List<Integer> list = new LinkedList<Integer>();
+        list.add(i);
+        return list;
+    }
+
+    public List merge(List p1, List p2) {
+        List<Integer> list = new LinkedList<Integer>();
+        list.addAll(p1);
+        list.addAll(p2);
+        return list;
     }
 }

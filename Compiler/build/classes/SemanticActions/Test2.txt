@@ -1,0 +1,13 @@
+program relationalTest (input,output);
+var
+   i,j : integer;
+   c,d:real;
+   z:array[1..100] of integer;
+
+begin
+   if (z[j] >= j)
+   then if (j - i <> 0)
+      then begin
+         j := i - 5
+         end
+end.

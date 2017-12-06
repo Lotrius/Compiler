@@ -12,5 +12,5 @@ begin
 	write(bff[2] ); 
 	write(cff[3] ); 
 	write(dff[4] ); 
-	write(eff[5] )
+	write(eff[5], hi)
 end.

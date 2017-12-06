@@ -26,4 +26,8 @@ public class ArrayEntry extends SymbolTableEntry {
         this.lowerBound = lowerBound;
         this.setIsArray(true);
     }
+    
+    public int getLowerBound() {
+        return this.lowerBound;
+    }
 }
