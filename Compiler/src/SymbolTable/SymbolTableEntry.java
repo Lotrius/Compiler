@@ -23,6 +23,8 @@ public class SymbolTableEntry {
     boolean cons;
     boolean reserved;
     String name;
+    int numParams;
+    int address;
     TokenType type;
 
     public SymbolTableEntry(String name) {
@@ -36,6 +38,8 @@ public class SymbolTableEntry {
         this.array = false;
         this.cons = false;
         this.reserved = false;
+        this.numParams = 0;
+        int address = 0;
         this.type = type;
     }
     
@@ -50,7 +54,15 @@ public class SymbolTableEntry {
     public void setIsVariable(boolean v) {
         this.var = v;
     }
+    
+    public void setNumParams(int num) {
+        this.numParams = num;
+    }
 
+    public void setAddress(int add) {
+        this.address = add;
+    }
+    
     public boolean isKeyword() {
         return this.kword;
     }
@@ -65,6 +77,10 @@ public class SymbolTableEntry {
 
     public void setIsProcedure(boolean p) {
         this.proc = p;
+    }
+    
+    public void setType(TokenType t) {
+        this.type = t;
     }
 
     public boolean isFunction() {

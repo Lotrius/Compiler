@@ -21,7 +21,8 @@ public class SemanticActions {
     private SymbolTable constantTable;
     private int tableSize = 100;
     private Quadruple quadruple;
-    private int GLOBAL_STORE = 0;
+    private int globalStore = 0;
+    private int localStore = 0;
     private SymbolTableEntry currentFunction = null;
     private Stack<Integer> paramCount;
 
@@ -97,6 +98,13 @@ public class SemanticActions {
             case 4:
                 semanticStack.push(token.getType());
                 break;
+            case 5:
+                insert = false;
+                SymbolTableEntry id5 = (SymbolTableEntry) semanticStack.pop();
+                gen("PROCBEGIN", id5);
+                localStore = quadruple.getNextQuad();
+                gen("alloc", "_");
+                break;
             case 6:
                 isArray = true;
                 break;
@@ -120,8 +128,96 @@ public class SemanticActions {
 
                 insert = false;
                 break;
+            case 11:
+                global = true;
+                localTable.delete();
+                currentFunction = null;
+                backpatch(localStore, localMemory);
+                gen("free", localMemory);
+                gen("PROCEND");
+                break;
             case 13:
                 semanticStack.push(token);
+                break;
+            case 15:
+                FunctionEntry fe = new FunctionEntry(token.getValue());
+                if (global) {
+                    globalTable.insert(fe);
+                } else {
+                    localTable.insert(fe);
+                }
+                semanticStack.push(fe);
+                VariableEntry $$FUN_NAME = create(fe.getName(), TokenType.INTEGER);
+                fe.setResult($$FUN_NAME);
+                global = false;
+                localMemory = 0;
+                break;
+            case 16:
+                Token tk = (Token) semanticStack.pop();
+                TokenType type = tk.getType();
+                SymbolTableEntry $$FUN_NAME16 = (SymbolTableEntry) semanticStack.pop();
+                $$FUN_NAME16.setType(type);
+                currentFunction = $$FUN_NAME16;
+                break;
+            case 17:
+                ProcedureEntry pe17 = new ProcedureEntry(token.getType().toString());
+                if (global) {
+                    globalTable.insert(pe17);
+                } else {
+                    localTable.insert(pe17);
+                }
+                semanticStack.push(pe17);
+                global = false;
+                localMemory = 0;
+                break;
+            case 19:
+                paramCount.push(0);
+                break;
+            case 20:
+                SymbolTableEntry id20 = (SymbolTableEntry) semanticStack.peek();
+                int pc20 = paramCount.pop();
+                id20.setNumParams(pc20);
+                break;
+            case 21:
+                Token id21 = (Token) semanticStack.peek();
+                TokenType type21 = id21.getType();
+                List<ParamInfo> pInfo = new LinkedList<ParamInfo>();
+                int pc21 = paramCount.pop();
+
+                int ub211 = -1;
+                int lb211 = -1;
+
+                if (isArray) {
+                    Token ub21 = (Token) semanticStack.pop();
+                    Token lb21 = (Token) semanticStack.pop();
+                    ub211 = Integer.parseInt(ub21.getValue());
+                    lb211 = Integer.parseInt(lb21.getValue());
+                }
+
+                while (type21 == TokenType.IDENTIFIER) {
+                    ParamInfo pi = new ParamInfo();
+                    if (isArray) {
+                        ArrayEntry entry = new ArrayEntry(id21.getValue(), type21);
+                        entry.setIsParameter(true);
+                        entry.setUpperBound(ub211);
+                        entry.setLowerBound(lb211);
+                        pi.setUB(ub211);
+                        pi.setLB(lb211);
+                        pi.setArray(true);
+                    } else {
+                        VariableEntry entry = new VariableEntry(id21.getValue(), type21);
+                        pi.setArray(false);
+                    }
+                    SymbolTableEntry entry21 = new SymbolTableEntry(id21.getValue());
+                    entry21.setAddress(localMemory);
+                    localMemory++;
+                    entry21.setType(type21);
+                    pi.setType(type21);
+                    pc21++;
+                    pInfo.add(pi);
+                    semanticStack.pop();
+                }
+                isArray = false;
                 break;
             case 22:
                 et = (etype) semanticStack.pop();
@@ -164,7 +260,7 @@ public class SemanticActions {
                 skipElse = makeList(quadruple.getNextQuad());
                 semanticStack.push(skipElse);
                 gen("goto", "_");
-                
+
                 Efalse = (LinkedList) semanticStack.peek();
                 backpatch(Efalse, quadruple.getNextQuad());
                 break;
@@ -172,13 +268,13 @@ public class SemanticActions {
                 skipElse = (LinkedList) semanticStack.pop();
                 Efalse = (LinkedList) semanticStack.pop();
                 Etrue = (LinkedList) semanticStack.pop();
-                
+
                 backpatch(skipElse, quadruple.getNextQuad());
                 break;
             case 29:
                 Efalse = (LinkedList) semanticStack.pop();
                 Etrue = (LinkedList) semanticStack.pop();
-                
+
                 backpatch(Efalse, quadruple.getNextQuad());
                 break;
             case 30:
@@ -524,13 +620,13 @@ public class SemanticActions {
                 semanticStack.push(etype.ARITHMETIC);
                 break;
             case 55:
-                backpatch(GLOBAL_STORE, globalMemory);
+                backpatch(globalStore, globalMemory);
                 gen("free", globalMemory);
                 gen("PROCEND");
                 break;
             case 56:
                 gen("PROCBEGIN", "main");
-                GLOBAL_STORE = quadruple.getNextQuad();
+                globalStore = quadruple.getNextQuad();
                 gen("alloc", "_");
                 break;
 
@@ -549,8 +645,13 @@ public class SemanticActions {
         quadruple.addQuad(quad);
     }
 
-    public void gen(String tviCode, int operand1) {
-        String[] quad = {tviCode, String.valueOf(operand1), null, null};
+    public void gen(String tviCode, SymbolTableEntry op1) {
+        String[] quad = {tviCode, op1.getName(), null, null};
+        quadruple.addQuad(quad);
+    }
+
+    public void gen(String tviCode, int in) {
+        String[] quad = {tviCode, String.valueOf(in), null, null};
         quadruple.addQuad(quad);
     }
 

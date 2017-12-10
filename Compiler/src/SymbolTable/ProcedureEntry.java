@@ -24,4 +24,8 @@ public class ProcedureEntry extends SymbolTableEntry {
         this.type = TokenType.PROCEDURE;
         this.setIsProcedure(true);
     }
+    
+    public ProcedureEntry(String name) {
+        super(name);
+    }
 }

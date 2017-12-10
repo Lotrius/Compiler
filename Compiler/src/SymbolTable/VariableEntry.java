@@ -23,4 +23,10 @@ public class VariableEntry extends SymbolTableEntry {
         this.type = type;
         this.setIsVariable(true);
     }
+    
+    public VariableEntry(String name, TokenType type) {
+        super(name);
+        this.type = type;
+        this.setIsVariable(true);
+    }
 }

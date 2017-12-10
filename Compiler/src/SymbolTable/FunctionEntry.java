@@ -17,12 +17,22 @@ public class FunctionEntry extends SymbolTableEntry{
     int numberOfParameters;
     List parameterInfo;
     TokenType type;
+    VariableEntry result;
     
-    public FunctionEntry(String name, int numberOfParameters, List parameterInfo) {
+    public FunctionEntry(String name, int numberOfParameters, List parameterInfo, VariableEntry result) {
         super(name);
         this.numberOfParameters = numberOfParameters;
         this.parameterInfo = parameterInfo;
         this.type = TokenType.FUNCTION;
+        this.result = result;
         this.setIsFunction(true);
+    }
+    
+    public FunctionEntry(String name) {
+        super(name);
+    }
+    
+    public void setResult(VariableEntry r) {
+        result = r;
     }
 }

@@ -41,6 +41,10 @@ public class SymbolTable {
     public void dumpTable() {
         System.out.println(ht);
     }
+    
+    public void delete() {
+        ht.clear();
+    }
 
     public void installBuiltins() {
         SymbolTableEntry main = new ProcedureEntry("MAIN", 0, Collections.emptyList());
