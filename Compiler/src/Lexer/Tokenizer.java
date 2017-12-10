@@ -329,26 +329,26 @@ public class Tokenizer {
                 currentChar = getChar();
                 if (currentChar == '>') {
                     token.setType(TokenType.RELOP);
-                    token.setValue("2");
+                    token.setValue("<>");
                     currentChar = getChar();
                 } else if (currentChar == '=') {
                     token.setType(TokenType.RELOP);
-                    token.setValue("5");
+                    token.setValue("<=");
                     currentChar = getChar();
                 } else {
                     token.setType(TokenType.RELOP);
-                    token.setValue("3");
+                    token.setValue("<");
                 }
                 break;
             case ">":
                 currentChar = getChar();
                 if (currentChar == '=') {
                     token.setType(TokenType.RELOP);
-                    token.setValue("5");
+                    token.setValue(">=");
                     currentChar = getChar();
                 } else {
                     token.setType(TokenType.RELOP);
-                    token.setValue("4");
+                    token.setValue(">");
                 }
                 break;
             case "(":
@@ -372,7 +372,7 @@ public class Tokenizer {
                         || lastToken.getType().equals(TokenType.INTCONSTANT)
                         || lastToken.getType().equals(TokenType.REALCONSTANT)) {
                     token.setType(TokenType.ADDOP);
-                    token.setValue("1");
+                    token.setValue("+");
                 } else {
                     token.setType(TokenType.UNARYPLUS);
                     token.setValue(null);
@@ -385,7 +385,7 @@ public class Tokenizer {
                         || lastToken.getType().equals(TokenType.INTCONSTANT)
                         || lastToken.getType().equals(TokenType.REALCONSTANT)) {
                     token.setType(TokenType.ADDOP);
-                    token.setValue("2");
+                    token.setValue("-");
                 } else {
                     token.setType(TokenType.UNARYMINUS);
                     token.setValue(null);
@@ -397,15 +397,15 @@ public class Tokenizer {
                 break;
             case "=":
                 token.setType(TokenType.RELOP);
-                token.setValue("1");
+                token.setValue("=");
                 break;
             case "*":
                 token.setType(TokenType.MULOP);
-                token.setValue("1");
+                token.setValue("*");
                 break;
             case "/":
                 token.setType(TokenType.MULOP);
-                token.setValue("2");
+                token.setValue("/");
                 break;
             default:
                 break;

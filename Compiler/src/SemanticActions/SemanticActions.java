@@ -405,13 +405,13 @@ public class SemanticActions {
                 if (typecheck(id39, id392) == 2) {
                     $$TEMP = create("TEMP1", TokenType.REAL);
                     gen("ltof", id392, $$TEMP);
-                    gen(token.getType().toString(), id39, $$TEMP, "_");
+                    gen(getString(token), id39, $$TEMP, "_");
                 } else if (typecheck(id39, id392) == 3) {
                     $$TEMP = create("TEMP1", TokenType.REAL);
                     gen("ltof", id39, $$TEMP);
-                    gen(token.getType().toString(), $$TEMP, id392, "_");
+                    gen(getString(token), $$TEMP, id392, "_");
                 } else {
-                    gen(token.getType().toString(), id39, id392, "_");
+                    gen(getString(token), id39, id392, "_");
                 }
                 gen("goto", "_");
                 Etrue = makeList(quadruple.getNextQuad() - 2);
@@ -458,13 +458,13 @@ public class SemanticActions {
                     SymbolTableEntry idfirr = (SymbolTableEntry) semanticStack.pop();
                     if (typecheck(idfirr, idsecc) == 0) {
                         $$TEMP = create("TEMP", TokenType.INTEGER);
-                        gen(token.getType().toString(), idfirr, idsecc, $$TEMP);
+                        gen(getString(token), idfirr, idsecc, $$TEMP);
                         semanticStack.push($$TEMP);
                     }
 
                     if (typecheck(idfirr, idsecc) == 1) {
                         $$TEMP = create("TEMP", TokenType.REAL);
-                        gen("f" + token.getType(), idfirr, idsecc, $$TEMP);
+                        gen("f" + getString(token), idfirr, idsecc, $$TEMP);
                         semanticStack.push($$TEMP);
                     }
 
@@ -472,7 +472,7 @@ public class SemanticActions {
                         SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.REAL);
                         gen("ltof", idsecc, $$TEMP1);
                         SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.REAL);
-                        gen("f" + token.getType(), idfirr, $$TEMP1, $$TEMP2);
+                        gen("f" + getString(token), idfirr, $$TEMP1, $$TEMP2);
                         semanticStack.push($$TEMP2);
                     }
 
@@ -480,7 +480,7 @@ public class SemanticActions {
                         SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.REAL);
                         gen("ltof", idfirr, $$TEMP1);
                         SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.REAL);
-                        gen("f" + token.getType(), $$TEMP1, idsecc, $$TEMP2);
+                        gen("f" + getString(token), $$TEMP1, idsecc, $$TEMP2);
                         semanticStack.push($$TEMP2);
                     }
                     semanticStack.push(etype.ARITHMETIC);
@@ -545,7 +545,7 @@ public class SemanticActions {
                             semanticStack.push($$TEMP2);
                         } else {
                             $$TEMP = create("TEMP1", TokenType.INTEGER);
-                            gen(token.getType().toString(), idfirrr, idseccc, $$TEMP);
+                            gen(getString(token), idfirrr, idseccc, $$TEMP);
                             semanticStack.push($$TEMP);
                         }
                     }
@@ -561,7 +561,7 @@ public class SemanticActions {
                             semanticStack.push($$TEMP2);
                         } else {
                             $$TEMP = create("TEMP", TokenType.REAL);
-                            gen("f" + token.getType(), idfirrr, idseccc, $$TEMP);
+                            gen("f" + getString(token), idfirrr, idseccc, $$TEMP);
                             semanticStack.push($$TEMP);
                         }
                     }
@@ -577,7 +577,7 @@ public class SemanticActions {
                             SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.REAL);
                             gen("ltof" + token.getType(), idseccc, $$TEMP1);
                             SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.REAL);
-                            gen("f" + token.getType(), idfirrr, $$TEMP1, $$TEMP2);
+                            gen("f" + getString(token), idfirrr, $$TEMP1, $$TEMP2);
                             semanticStack.push($$TEMP2);
                         }
                     }
@@ -593,7 +593,7 @@ public class SemanticActions {
                             SymbolTableEntry $$TEMP1 = create("TEMP1", TokenType.REAL);
                             gen("ltof" + token.getType(), idfirrr, $$TEMP1);
                             SymbolTableEntry $$TEMP2 = create("TEMP2", TokenType.REAL);
-                            gen("f" + token.getType(), $$TEMP1, idseccc, $$TEMP2);
+                            gen("f" + getString(token), $$TEMP1, idseccc, $$TEMP2);
                             semanticStack.push($$TEMP2);
                         }
                     }
@@ -931,53 +931,43 @@ public class SemanticActions {
 
         if (type == TokenType.ADDOP) {
             switch (value) {
-                case "1":
+                case "+":
                     str = "add";
                     break;
-                case "2":
+                case "-":
                     str = "sub";
                     break;
-                case "3":
-                    str = "or";
-                    break;
-
             }
         } else if (type == TokenType.MULOP) {
             switch (value) {
-                case "1":
+                case "*":
                     str = "mul";
                     break;
-                case "2":
+                case "/":
                     str = "div";
                     break;
-                case "3":
-                    str = "div";
-                    break;
-                case "4":
-                    str = "mod";
-                    break;
-                case "5":
-                    str = "and";
-                    break;
-            } 
-        } else {
+            }
+        } else if (type == TokenType.RELOP) {
             switch (value) {
-                case "1":
+                case "=":
                     str = "beq";
                     break;
-                case "2":
+                case "<>":
                     str = "bne";
                     break;
-                case "3":
+                case "<":
                     str = "blt";
                     break;
-                case "4":
-                    str = "mod";
+                case ">":
+                    str = "bgt";
                     break;
-                case "5":
-                    str = "and";
+                case "<=":
+                    str = "ble";
                     break;
-            } 
+                case ">=":
+                    str = "bge";
+                    break;
+            }
         }
 
         return str;
