@@ -36,6 +36,10 @@ public class ArrayEntry extends SymbolTableEntry {
     public int getLowerBound() {
         return this.lowerBound;
     }
+    
+    public int getUpperBound() {
+        return this.upperBound;
+    }
 
     public void setLowerBound(int lowerBound) {
         this.lowerBound = lowerBound;

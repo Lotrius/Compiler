@@ -33,6 +33,10 @@ public class FunctionEntry extends SymbolTableEntry{
     }
     
     public void setResult(VariableEntry r) {
-        result = r;
+        this.result = r;
+    }
+    
+    public VariableEntry getResult() {
+        return this.result;
     }
 }

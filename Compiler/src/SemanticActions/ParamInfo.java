@@ -6,12 +6,13 @@
 package SemanticActions;
 
 import Parser.TokenType;
+import SymbolTable.SymbolTableEntry;
 
 /**
  *
  * @author Solomon
  */
-public class ParamInfo {
+public class ParamInfo extends SymbolTableEntry{
     int ub;
     int lb;
     boolean array;
@@ -39,4 +40,6 @@ public class ParamInfo {
     public void setType(TokenType type) {
         this.type = type;
     }
+    
+    
 }

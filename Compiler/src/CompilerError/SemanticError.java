@@ -6,6 +6,7 @@
 package CompilerError;
 
 import SemanticActions.SemanticActions.etype;
+import SymbolTable.SymbolTableEntry;
 
 /**
  *
@@ -28,6 +29,10 @@ public class SemanticError extends CompilerError {
     public static SemanticError eTypeMismatch(etype et) {
         return new SemanticError("Error: Etype mismatch with " + et);
     }
+    
+    public static SemanticError typeMismatch(SymbolTableEntry entry) {
+        return new SemanticError("Error: Etype mismatch with " + entry);
+    }
 
     public static SemanticError modError(String value1, String value2) {
         return new SemanticError("Error: Mod error with " + value1 + " and " + value2);
@@ -39,5 +44,13 @@ public class SemanticError extends CompilerError {
     
     public static SemanticError arrayBoundError() {
         return new SemanticError("Error: Bad array bounds");
+    }
+    
+    public static SemanticError wrongNumParams() {
+        return new SemanticError("Error: Wrong number of parameters");
+    }
+    
+    public static SemanticError notAProcedure(SymbolTableEntry entry) {
+        return new SemanticError("Error: " + entry.toString() + " is not a procedure");
     }
 }

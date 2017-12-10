@@ -6,6 +6,7 @@
 package SymbolTable;
 
 import Parser.TokenType;
+import SemanticActions.ParamInfo;
 
 /**
  *
@@ -26,6 +27,7 @@ public class SymbolTableEntry {
     int numParams;
     int address;
     TokenType type;
+    ParamInfo pi;
 
     public SymbolTableEntry(String name) {
         this.name = name;
@@ -41,6 +43,11 @@ public class SymbolTableEntry {
         this.numParams = 0;
         int address = 0;
         this.type = type;
+        this.pi = null;
+    }
+    
+    public SymbolTableEntry() {
+        
     }
     
     public String getName() {
@@ -59,6 +66,10 @@ public class SymbolTableEntry {
         this.numParams = num;
     }
 
+    public int getNumParams() {
+        return this.numParams;
+    }
+    
     public void setAddress(int add) {
         this.address = add;
     }
@@ -135,4 +146,7 @@ public class SymbolTableEntry {
         return this.type;
     }
 
+    public ParamInfo getPI() {
+        return this.pi;
+    }
 }

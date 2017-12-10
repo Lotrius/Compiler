@@ -28,4 +28,12 @@ public class ProcedureEntry extends SymbolTableEntry {
     public ProcedureEntry(String name) {
         super(name);
     }
+    
+    public List getParameterInfo() {
+        return this.paramterInfo;
+    }
+    
+    public int getNumParam() {
+        return this.numberOfParameters;
+    }
 }
