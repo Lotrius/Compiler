@@ -3,9 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Father/Desktop/Compiler/Compiler/src/Lexer/Tokenizer.java</file>
             <file>file:/C:/Users/Father/Desktop/Compiler/Compiler/src/SemanticActions/ParamInfo.java</file>
             <file>file:/C:/Users/Father/Desktop/Compiler/Compiler/src/CompilerError/SemanticError.java</file>
-            <file>file:/C:/Users/Father/Desktop/Compiler/Compiler/src/Parser/TokenType.java</file>
             <file>file:/C:/Users/Father/Desktop/Compiler/Compiler/src/SemanticActions/SemanticActions.java</file>
             <file>file:/C:/Users/Father/Desktop/Compiler/Compiler/src/SymbolTable/SymbolTableEntry.java</file>
             <file>file:/C:/Users/Father/Desktop/Compiler/Compiler/src/SymbolTable/FunctionEntry.java</file>
